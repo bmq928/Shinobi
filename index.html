@@ -11,23 +11,30 @@
     <title>Shinobi</title>
 </head>
 <body ng-controller="mainCtrl">
-    
-    
+    <div ng-if="tab === 'Live'">
+        <slidebar tab="Live"></slidebar>
+    </div>
+    <div ng-if="tab === 'Playback'">
+        <slidebar tab="Playback"></slidebar>
+    </div>
+    <div ng-if="tab === 'Config'">
+        <slidebar tab="Config"></slidebar>
+    </div>
     <div ui-view></div>
-
     
     <script src="public/jquery/dist/jquery.min.js"></script>
     <script src="public/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="public/angular/angular.js"></script>
     <script src="public/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="app-core/app-core.module.js"></script>
     <script src="app/app.module.js"></script>
     <script src="app/app.config.js"></script>
     <script src="app/main.controller.js"></script>
+    <script src="app/common/directives/slidebar/slidebar.directive.js"></script>
+    <script src="app/common/directives/slidebar/slidebar.controller.js"></script>
+    <script src="app/common/directives/option-bar/option-bar.controller.js"></script>
+    <script src="app/common/directives/option-bar/option-bar.directive.js"></script>
     <script src="app/live/live.controller.js"></script>
-    <script src="app/live/live-slidebar/live-slidebar.controller.js"></script>
-    <script src="app/live/live-main/live-main.controller.js"></script>
-    
+    <script src="app/playback/playback.controller.js"></script>
     <script>
         //just for make tool-tip
         $(document).ready(function(){

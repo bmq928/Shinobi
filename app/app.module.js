@@ -1,5 +1,5 @@
 // var angular= require('angular');
 (function(){
     angular
-        .module('app', ['app.core']);
+        .module('app', ['ui.router']);
 })()

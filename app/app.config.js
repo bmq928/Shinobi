@@ -11,20 +11,15 @@
                 url: '/live',
                 templateUrl: './app/live/live.view.html',
                 controller: 'liveCtrl',
-                controllerAs: 'vm',
-                views: {
-                    "main": {
-                        templateUrl: './app/live/live-main/live-main.view.html',
-                        controller: 'liveMainCtrl',
-                        controllerAs: 'm_vm'
-                    },
-                    "slidebar": {
-                        templateUrl: './app/live/live-slidebar/live-slidebar.view.html',
-                        controller: 'liveSlideBarCtrl',
-                        controllerAs: 's_vm'
-                    }
-                }
+                controllerAs: 'vm'
             })
+            .state('playback', {
+                url: '/playback',
+                templateUrl: './app/playback/playback.view.html',
+                controller: 'playbackCtrl',
+                controllerAs: 'vm'
+            })
+
         $urlRouterProvider.otherwise('/live');
     }
 

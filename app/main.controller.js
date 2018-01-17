@@ -5,6 +5,8 @@
 
     mainCtrl.$inject = ['$scope']
     function mainCtrl($scope){
+        $scope.tab = "Live"
+
         
     }
 })()
