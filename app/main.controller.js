@@ -5,6 +5,6 @@
 
     mainCtrl.$inject = ['$scope']
     function mainCtrl($scope){
-
+        
     }
 })()

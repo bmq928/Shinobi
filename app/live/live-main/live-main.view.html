@@ -1,0 +1,130 @@
+<div class="navbar-fixed-left">
+    <!--============ nav button ==============-->
+    <div class="navigation">
+        <ul>
+            <!--=========== comment after li is some trick to make button doesnt have distance =========-->
+          <li><a href="#">Live</a></li><!--
+          --><li><a href="#">Playback</a></li><!--
+          --><li><a href="#">Config</a></li>
+        </ul>
+    </div>
+    <div class="option">
+        <!--========= Live Mode ====================-->
+        <!-- anther mode use view and custom class and css -->
+        <!-- this is just demo for live mode -->
+        <ul>
+            <li><a class="live-mode" data-toggle="tooltip" title="info of current camera" href="#"><div class="info"></div></a></li><!--
+            --><li><a class="live-mode" data-toggle="tooltip" title="map of current camera" href="#"><div class="map"></div></a></li><!--
+            --><li><a class="live-mode" data-toggle="tooltip" title="setting of current camera" href="#"><div class="setting"></div></a></li><!--
+            --><li><a class="live-mode" data-toggle="tooltip" title="flash-auto" href="#"><div class="flash-auto"></div></a></li>
+        </ul>
+    </div>
+    <ul class="frames">
+        <li id="camera-list" class="frame">
+                <div class="frame-heading">
+                    <div class="camera-img"></div>
+                    <span>List Camera</span>
+                </div>
+                <div class="frame-content">
+                    <ul class="list-camera">
+                        <li>
+                            <a href="#">
+                                <div class="camera-item"></div>
+                                <span>Camera 1</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="camera-item"></div>
+                                <span style="margin-bottom:5px">Camera 2</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="camera-item"></div>
+                                <span>Camera 3</span>
+                            </a>    
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="camera-item"></div>
+                                <span>Camera 4</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        <li class="frame">
+            <div class="frame-heading">
+                <div class="view-icon"></div>
+                <span>View</span>
+            </div>
+            <div class="frame-content">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span class="map-view" style="margin-right:15px"></span>
+                            <span>Address of camera</span>
+                        </a>
+                    </li>
+                    <li>    
+                        <a href="#">
+                            <div class="camera-item"></div>
+                            <span>Screen of camera</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li id="snapshot-frame" class="frame">
+            <div class="frame-heading">
+                <div class="photo"></div>
+                <span>Snapshot</span>
+            </div>
+            <div class="frame-content">
+                <ul>
+                    <button class="btn btn-success">This Camera</button>
+                    <button class="btn btn-success">All Camera</button>
+                </ul>
+            </div>
+        </li>
+        <li class="frame">
+            <div class="frame-heading">
+                <div class="control-camera"></div>
+                <span>Control Camera</span>
+            </div>
+            <div class="frame-content">
+                <div class="pull-left">
+                    <div>
+                        <span>Volume</span>
+                        <input type="range" min="0" max="100">
+                    </div>
+                    <div>
+                        <span>Zoom</span>
+                        <input type="range"  min="0" max="100">
+                    </div>
+                    <div>
+                        <strong>Camera Remote :</strong>
+                    </div>
+                </div>
+                <div class="direction-btns pull-right">
+                    <ul>
+                        <li><button class="btn btn-default"><div class="up-left"></div></button></li><!--
+                     --><li><button class="btn btn-default"><div class="up"></div></button></li><!--
+                    --><li><button class="btn btn-default"><div class="up-right"></div></button></li>
+                    </ul>
+                    <ul>
+                        <li><button class="btn btn-default"><div class="left"></div></button></li><!--
+                    --><li><button style="padding: 0 0 0 0" class="btn btn-default"><div class="centre"></div></button></li><!--
+                --><li><button class="btn btn-default"><div class="right"></div></button></li>
+                    </ul>
+                    <ul>
+                        <li><button class="btn btn-default"><div class="down-left"></div></button></li><!--
+                    --><li><button class="btn btn-default"><div class="down"></div></button></li><!--
+                --><li><button class="btn btn-default"><div class="down-right"></div></button></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
