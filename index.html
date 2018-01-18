@@ -11,15 +11,7 @@
     <title>Shinobi</title>
 </head>
 <body ng-controller="mainCtrl">
-    <div ng-if="tab === 'Live'">
-        <slidebar tab="Live"></slidebar>
-    </div>
-    <div ng-if="tab === 'Playback'">
-        <slidebar tab="Playback"></slidebar>
-    </div>
-    <div ng-if="tab === 'Config'">
-        <slidebar tab="Config"></slidebar>
-    </div>
+    <slidebar></slidebar>
     <div ui-view></div>
     
     <script src="public/jquery/dist/jquery.min.js"></script>

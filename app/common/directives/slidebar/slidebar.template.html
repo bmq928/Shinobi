@@ -7,9 +7,11 @@
           --><li><a ui-sref="playback" ng-click="vm.changeTab('Playback')">Playback</a></li><!--
           --><li><a ui-sref="config" ng-click="vm.changeTab('Config')">Config</a></li>
         </ul>
+
+        <button ng-click="vm.live.flashChange()"></button>
     </div>
     <option-bar></option-bar>
-    <div ng-if="tab === 'Live'">
+    <div ng-if="$root.tab === 'Live'">
         <ul class="frames">
             <li id="camera-list" class="frame">
                     <div class="frame-heading">
@@ -119,7 +121,7 @@
             </li>
         </ul>
     </div>
-    <div ng-if="tab === 'Playback'">
+    <div ng-if="$root.tab === 'Playback'">
         <ul class="frames">
             <li id="camera-list" class="frame">
                 <div class="frame-heading">

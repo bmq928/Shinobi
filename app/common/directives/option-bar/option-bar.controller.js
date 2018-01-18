@@ -3,8 +3,8 @@
         .module('app')
         .controller('optionBarCtrl', optionBarCtrl)
 
-    optionBarCtrl.$inject = ['$scope']
-    function optionBarCtrl($scope) {
+    optionBarCtrl.$inject = ['$rootScope']
+    function optionBarCtrl($rootScope) {
         var vm = this;
 
         vm.curFlash = 'flash-auto'
@@ -13,7 +13,7 @@
         vm.live = {
             flashChange : function(){
                 var states = ['flash-auto', 'flash-on', 'flash-off'];
-                vm.curFlash = states[++i];
+                vm.curFlash = states[(++i) % states.length];
             }
         }
     }

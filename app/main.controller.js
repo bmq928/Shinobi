@@ -3,9 +3,9 @@
         .module('app')
         .controller('mainCtrl', mainCtrl)
 
-    mainCtrl.$inject = ['$scope']
-    function mainCtrl($scope){
-        $scope.tab = "Live"
+    mainCtrl.$inject = ['$rootScope']
+    function mainCtrl($rootScope){
+        $rootScope.tab = "Live"
 
         
     }
