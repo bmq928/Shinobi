@@ -12,7 +12,10 @@
 </head>
 <body ng-controller="mainCtrl">
     <slidebar></slidebar>
-    <div ui-view></div>
+    <div class="main">
+        <page-header></page-header>
+        <div ui-view></div>
+    </div>
     
     <script src="public/jquery/dist/jquery.min.js"></script>
     <script src="public/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -27,6 +30,8 @@
     <script src="app/common/directives/option-bar/option-bar.directive.js"></script>
     <script src="app/common/directives/frames/frames.directive.js"></script>
     <script src="app/common/directives/frames/frames.controller.js"></script>
+    <script src="app/common/directives/page-header/page-header.directive.js"></script>
+    <script src="app/common/directives/page-header/page-header.controller.js"></script>
     <script src="app/live/live.controller.js"></script>
     <script src="app/playback/playback.controller.js"></script>
     <script>

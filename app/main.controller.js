@@ -21,5 +21,10 @@
             name: 'Camera4'
         }];  
         
+        //divide screen in rate
+        $rootScope.divideScreen = 3;
+
+        //current camera
+        $rootScope.curCam = $rootScope.selectedCam[0].name;
     }
 })()
