@@ -8,7 +8,7 @@
         var vm = this;
         
         vm.changeTab = function(newTab){
-            $rootScope.tab = newTab;
+            $rootScope.$emit($rootScope.events.changeTab, newTab);
         }
 
         vm.live = {

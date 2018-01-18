@@ -9,7 +9,7 @@
                     </strong>
                 </li>
 
-                <li ng-repeat="li in vm.divideScreens" style="margin-left:3px">
+                <li ng-repeat="li in vm.divideScreens track by $index" style="margin-left:3px">
                     <button class="btn btn-default" ng-click="vm.changeDivideScreen(li)">1:<span ng-bind="li"></span>
                     </button>
                 </li>
@@ -43,5 +43,5 @@
     </div>
 </div>
 <div class="tab">
-   Selected Cam : <span ng-bind="$root.curCam"></span>
+   Selected Cam : <span ng-bind="$root.curCam.name"></span>
 </div>

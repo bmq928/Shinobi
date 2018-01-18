@@ -7,8 +7,8 @@
             </div>
             <div class="frame-content">
                 <ul class="list-camera">
-                    <li ng-repeat="c in $root.selectedCam">
-                        <a href="#">
+                    <li ng-repeat="c in $root.selectedCam track by $index">
+                        <a href=""  ng-click="vm.changeSelectedCam(c)">
                             <div class="camera-item"></div>
                             <span ng-bind="c.name"></span>
                         </a>
@@ -100,8 +100,8 @@
             </div>
             <div class="frame-content">
                 <ul class="list-camera">
-                    <li ng-repeat="c in $root.selectedCam">
-                        <a href="#">
+                    <li ng-repeat="c in $root.selectedCam track by $index">
+                        <a href="" ng-click="vm.changeSelectedCam(c)">
                             <div class="camera-item"></div>
                             <span ng-bind="c.name"></span>
                         </a>

@@ -9,7 +9,7 @@
 
         vm.divideScreens = [1, 2, 3, 4, 5];
         vm.changeDivideScreen = function(num){
-            $rootScope.divideScreen = num;
+            $rootScope.$emit($rootScope.events.changeDivideScreen, num);
         }
     }
 })()
