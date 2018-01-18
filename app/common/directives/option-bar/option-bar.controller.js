@@ -14,6 +14,9 @@
             flashChange : function(){
                 var states = ['flash-auto', 'flash-on', 'flash-off'];
                 vm.curFlash = states[(++i) % states.length];
+            },
+            showInfo : function(){
+                
             }
         }
     }
