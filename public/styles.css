@@ -236,6 +236,7 @@ li.camera{
     list-style: none;
     display: inline-block;
     margin-bottom: 2px;
+    cursor: pointer;
 }
 
 li.camera > div{

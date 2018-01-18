@@ -2,14 +2,14 @@
     <ul class="">
         <!--
         --><li class="camera" ng-repeat="c in $root.selectedCam">
-            <div ng-class="">
-                <div class="camera-header">
+            <div ng-click="vm.changeSelectedCam(c)">
+                <div ng-class="c === $root.curCam ? 'camera-selected camera-header' : 'camera-header'">
                     <i class="fa fa-video-camera" aria-hidden="true"></i>
                     <span class="camera-header-title" ng-bind="c.name"></span>
                 </div>
-            </div>
-            <div class="">
-                <img src="public/images/icon/800px_COLOURBOX19351424.jpg" alt="fasdkjf" srcset="">
+                <div class="">
+                    <img src="public/images/icon/800px_COLOURBOX19351424.jpg" alt="fasdkjf" srcset="">
+                </div>
             </div>
         </li><!--
         -->

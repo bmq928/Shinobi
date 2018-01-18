@@ -36,7 +36,6 @@
 
         $rootScope.$on($rootScope.events.changeSelectedCam, function (e, cam) {
             $rootScope.curCam = cam;
-            console.log(cam)
         });
 
         $rootScope.$on($rootScope.events.changeDivideScreen, function(e, num){

@@ -3,9 +3,12 @@
         .module('app')
         .controller('liveCtrl', liveCtrl);
 
-    
-    function liveCtrl(){
+    liveCtrl.$inject = ['$rootScope']
+    function liveCtrl($rootScope){
         var vm = this;
-        console.log('fasd');
+
+        vm.changeSelectedCam = function(cam){
+            $rootScope.$emit($rootScope.events.changeSelectedCam, cam);
+        }
     }
 })()
