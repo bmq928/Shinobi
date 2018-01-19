@@ -1,15 +1,16 @@
 <div class="view">
+
+    <!-- =========DONT MODIFY THIS FILE======= -->
+    <!-- ================IF NOT CHANGE JQUERY IMPLEMENTATION IN LIVE_CONTROLLER============== -->
     <ul class="">
         <!--
         --><li class="camera" ng-repeat="c in $root.selectedCam">
-            <div ng-click="vm.changeSelectedCam(c)">
+            <div class="jquery_title" ng-click="vm.changeSelectedCam(c)">
                 <div ng-class="c === $root.curCam ? 'camera-selected camera-header' : 'camera-header'">
                     <i class="fa fa-video-camera" aria-hidden="true"></i>
                     <span class="camera-header-title" ng-bind="c.name"></span>
                 </div>
-                <div class="">
-                    <img src="public/images/icon/800px_COLOURBOX19351424.jpg" alt="fasdkjf" srcset="">
-                </div>
+                <img src="public/images/icon/800px_COLOURBOX19351424.jpg" alt="fasdkjf" srcset="">
             </div>
         </li><!--
         -->
