@@ -3,8 +3,8 @@
         .module('app')
         .controller('optionBarCtrl', optionBarCtrl)
 
-    optionBarCtrl.$inject = ['$rootScope']
-    function optionBarCtrl($rootScope) {
+    optionBarCtrl.$inject = ['$rootScope', '$uibModal']
+    function optionBarCtrl($rootScope, $uibModal) {
         var vm = this;
 
         vm.curFlash = 'flash-auto'
@@ -16,7 +16,12 @@
                 vm.curFlash = states[(++i) % states.length];
             },
             showInfo : function(){
-                
+                var modalInstance =$uibModal.open({
+                    templateUrl: '/app/camera-info/camera-info.view.html',
+                    bindToController: true,
+                    controller: 'camInfoCtrl as c_vm',
+                    backdrop: true
+                })
             }
         }
     }

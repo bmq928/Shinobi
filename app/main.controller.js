@@ -8,7 +8,7 @@
     // Store the state of app
     // to be the bus for all component communicating
     function mainCtrl($rootScope) {
-        $rootScope.tab = "Playback";
+        $rootScope.tab = "Live";
 
         //now it only stores name but when it has api, it stores data of all of aspect of a cam selected
         $rootScope.selectedCam = [{
