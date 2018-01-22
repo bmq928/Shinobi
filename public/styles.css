@@ -274,19 +274,21 @@ li.camera  img {
 .flash-off, .flash-on, .info, .map, .remove, 
 .rename, .save, .setting, .centre, .down-left, 
 .down-right, .down, .left, .right, .up-left, 
-.up-right, .up
+.up-right, .up, .full-screen, .logs, .search-cam
 { display: inline-block; background: url('./images/icon/icons.png') no-repeat; overflow: hidden; text-indent: -9999px; text-align: left; margin-bottom: 0;vertical-align: middle;}
  
 .camera-item { background-position: -0px -0px; width: 50px; height: 50px; }
 .camera-img { background-position: -0px -50px; width: 30px; height: 30px; }
 .control-camera { background-position: -0px -80px; width: 30px; height: 30px; }
-.image { background-position: -0px -110px; width: 30px; height: 30px; }
-.map-view { background-position: -0px -140px; width: 30px; height: 30px; }
-.photo { background-position: -0px -170px; width: 30px; height: 30px; }
-.search { background-position: -0px -200px; width: 30px; height: 30px; }
-.video { background-position: -0px -230px; width: 30px; height: 30px; }
-.view-icon { background-position: -0px -260px; width: 30px; height: 30px; }
-.centre { background-position: -0px -290px; width: 25px; height: 25px; }
+.full-screen { background-position: -0px -110px; width: 30px; height: 30px; }
+.image { background-position: -0px -140px; width: 30px; height: 30px; }
+.logs { background-position: -0px -170px; width: 30px; height: 30px; }
+.map-view { background-position: -0px -200px; width: 30px; height: 30px; }
+.photo { background-position: -0px -230px; width: 30px; height: 30px; }
+.search { background-position: -0px -260px; width: 30px; height: 30px; }
+.video { background-position: -0px -290px; width: 30px; height: 30px; }
+.view-icon { background-position: -0px -320px; width: 30px; height: 30px; }
+.centre { background-position: -0px -350px; width: 25px; height: 25px; }
 .flash-auto { background-position: -30px -50px; width: 20px; height: 20px; }
 .flash-off { background-position: -30px -70px; width: 20px; height: 20px; }
 .flash-on { background-position: -30px -90px; width: 20px; height: 20px; }
@@ -295,12 +297,13 @@ li.camera  img {
 .remove { background-position: -30px -150px; width: 20px; height: 20px; }
 .rename { background-position: -30px -170px; width: 20px; height: 20px; }
 .save { background-position: -30px -190px; width: 20px; height: 20px; }
-.setting { background-position: -30px -210px; width: 20px; height: 20px; }
-.down-left { background-position: -30px -230px; width: 12px; height: 12px; }
-.down-right { background-position: -30px -242px; width: 12px; height: 12px; }
-.down { background-position: -30px -254px; width: 12px; height: 12px; }
-.left { background-position: -30px -266px; width: 12px; height: 12px; }
-.right { background-position: -30px -278px; width: 12px; height: 12px; }
-.up-left { background-position: -25px -290px; width: 12px; height: 12px; }
-.up-right { background-position: -37px -290px; width: 12px; height: 12px; }
-.up { background-position: -25px -302px; width: 12px; height: 12px; }
+.search-cam { background-position: -30px -210px; width: 20px; height: 20px; }
+.setting { background-position: -30px -230px; width: 20px; height: 20px; }
+.down-left { background-position: -30px -250px; width: 12px; height: 12px; }
+.down-right { background-position: -30px -262px; width: 12px; height: 12px; }
+.down { background-position: -30px -274px; width: 12px; height: 12px; }
+.left { background-position: -30px -286px; width: 12px; height: 12px; }
+.right { background-position: -30px -298px; width: 12px; height: 12px; }
+.up-left { background-position: -30px -310px; width: 12px; height: 12px; }
+.up-right { background-position: -30px -322px; width: 12px; height: 12px; }
+.up { background-position: -30px -334px; width: 12px; height: 12px; }
