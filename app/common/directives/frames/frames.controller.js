@@ -3,18 +3,19 @@
         .module('app')
         .controller('framesCtrl', framesCtrl)
 
-    framesCtrl.$inject = ['$rootScope', '$uibModal', 'mapSrc']
-    function framesCtrl($rootScope, $uibModal, mapSrc){
+    framesCtrl.$inject = ['$rootScope', '$uibModal']
+    function framesCtrl($rootScope, $uibModal){
         var vm = this;
+        vm.searchText = {
+            name: ""
+        }
 
         vm.changeSelectedCam = function(cam){
             $rootScope.$emit($rootScope.events.changeSelectedCam, cam);
         }
 
-        vm.showMapAllCam = function(){
-            $uibModal.open({
-                template: '<img src="' + mapSrc.getAll() +  '" alt="Map">'
-            })
-        }
+        $rootScope.$on($rootScope.events.searchCam, function(e, text){
+            vm.searchText.name = text;
+        })
     }
 })()

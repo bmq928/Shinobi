@@ -6,12 +6,19 @@
     liveCtrl.$inject = ['$rootScope', '$']
     function liveCtrl($rootScope, $) {
         var vm = this;
+        //filter camera
+        vm.searchText = {
+            name: ""
+        }
 
         vm.changeSelectedCam = function (cam) {
             $rootScope.$emit($rootScope.events.changeSelectedCam, cam);
-
         }
 
+        //search camera
+        $rootScope.$on($rootScope.events.searchCam, function(e, text){
+            vm.searchText.name = text;
+        })
 
         //change divided camera
         $rootScope.$on($rootScope.events.changeDivideScreen, function (e, num) {
@@ -60,7 +67,6 @@
             var li = $('li.camera');
             var img = $('li.camera img');
             var title = $('div.jquery_title');
-            console.log(title);
 
             li.css('width', rate[num].width_percent);
             title.each(function(){
@@ -69,8 +75,6 @@
                 $this.children().width(rate[num].size);
             })
             img.width(rate[num].size).height(rate[num].size);
-
-            
         })
     }
 })()

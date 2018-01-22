@@ -4,7 +4,7 @@
     <!-- ================IF NOT CHANGE JQUERY IMPLEMENTATION IN LIVE_CONTROLLER============== -->
     <ul class="">
         <!--
-        --><li class="camera" ng-repeat="c in $root.selectedCam">
+        --><li class="camera" ng-repeat="c in $root.selectedCam | filter:vm.searchText track by $index">
             <div class="jquery_title" ng-click="vm.changeSelectedCam(c)">
                 <div ng-class="c === $root.curCam ? 'camera-selected camera-header' : 'camera-header'">
                     <i class="fa fa-video-camera" aria-hidden="true"></i>

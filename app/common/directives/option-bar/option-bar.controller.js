@@ -12,7 +12,14 @@
 
         vm.live = {
             flashChange: flashChange,
-            showInfo: showInfoCam
+            showInfo: showInfoCam,
+            searchCam: {
+                visible: false,
+                showInput: showInput,
+                closeInput: closeInput,
+                typing: typing,
+                text: ""
+            }
         }
 
         vm.playback = {
@@ -28,9 +35,23 @@
             var modalInstance = $uibModal.open({
                 templateUrl: '/app/camera-info/camera-info.view.html',
                 bindToController: true,
-                controller: 'camInfoCtrl as c_vm',
+                controller: 'camInfoCtrl as vm',
                 backdrop: true
             })
+        }
+
+        function showInput() {
+            vm.live.searchCam.visible = true;
+        }
+
+        function closeInput() {
+            vm.live.searchCam.visible = false;
+            vm.live.searchCam.text = "";
+            $rootScope.$emit($rootScope.events.searchCam, vm.live.searchCam.text);
+        }
+
+        function typing() {
+            $rootScope.$emit($rootScope.events.searchCam, vm.live.searchCam.text)
         }
     }
 })()

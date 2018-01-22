@@ -31,7 +31,8 @@
         $rootScope.events = {
             changeSelectedCam: 'CHANGE_SELECTED',
             changeDivideScreen: 'CHANGE_DIVIDE_SCREEN',
-            changeTab: 'CHANGE_TAB'
+            changeTab: 'CHANGE_TAB',
+            searchCam: 'SEARCH_CAMERA'
         }
 
         $rootScope.$on($rootScope.events.changeSelectedCam, function (e, cam) {

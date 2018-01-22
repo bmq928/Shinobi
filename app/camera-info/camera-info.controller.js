@@ -7,6 +7,5 @@
     function camInfoCtrl($rootScope){
         var vm = this;
 
-        console.log('camInfoCtrl');
     }
 })()
