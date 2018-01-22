@@ -12,12 +12,16 @@
 
         //now it only stores name but when it has api, it stores data of all of aspect of a cam selected
         $rootScope.selectedCam = [{
+            _id : 'Camera1',
             name: 'Camera1'
         }, {
+            _id : 'Camera2',
             name: 'Camera2'
         }, {
+            _id : 'Camera3',
             name: 'Camera3'
         }, {
+            _id : 'Camera4',
             name: 'Camera4'
         }];
 

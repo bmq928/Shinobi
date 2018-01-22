@@ -23,7 +23,7 @@
         }
 
         vm.playback = {
-
+            showInfo: showInfoCam
         }
 
         function flashChange() {

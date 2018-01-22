@@ -11,7 +11,7 @@
     </ul>
 
     <ul ng-if="$root.tab === 'Playback'">
-        <li class="dropdown"><a class="live-mode dropdown-toggle" data-toggle="dropdown" href=""><div class="info"></div><span class="caret"></span></a><ul class=" dropdown-menu"><li><a href="">Camera Info</a></li><li><a href="">Video Info</a></li></ul></li><!--
+        <li class="dropdown"><a class="live-mode dropdown-toggle" data-toggle="dropdown" href=""><div class="info"></div><span class="caret"></span></a><ul class=" dropdown-menu"><li><a ng-click="vm.playback.showInfo()" href="">Camera Info</a></li><li><a href="">Video Info</a></li></ul></li><!--
         --><li><a class="live-mode"  href=""><div class="rename"></div></a></li><!--
         --><li><a class="live-mode" href=""><div class="remove"></div></a></li><!--
         --><li><a class="live-mode" href=""><div class="save"></div></a></li>
