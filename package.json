@@ -1,20 +1,22 @@
 {
-  "name": "app",
+  "name": "shinobi",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
-  "dependencies": {
-    "@uirouter/angularjs": "^1.0.13",
-    "angular": "^1.6.8",
-    "angular-animate": "^1.6.8",
-    "angular-ui-bootstrap": "^2.5.6",
-    "angular-ui-router-uib-modal": "0.0.11",
-    "express": "^4.16.2"
-  },
-  "devDependencies": {},
+  "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bmq928/Shinobi.git"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bmq928/Shinobi/issues"
+  },
+  "homepage": "https://github.com/bmq928/Shinobi#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }
