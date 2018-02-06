@@ -11,8 +11,13 @@
             controller: 'navbarCtrl as vm',
             link: function (scope, el, attr) {
                 var $ = window.jQuery;
+
+                // side-nav eff
                 $("#tool-cam").sideNav();
                 $(".button-collapse").sideNav();
+
+                //route button(tab) eff
+
             }
         }
     }
