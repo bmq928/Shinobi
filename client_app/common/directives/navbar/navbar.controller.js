@@ -5,6 +5,6 @@
 
     navbarCtrl.$inject = ['$rootScope']
     function navbarCtrl($rootScope){
-
+        
     }
 })()
