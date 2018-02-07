@@ -42,7 +42,7 @@ ul#nav-mobile > li{
 .side-nav > li.row.hide-on-large-only{
     margin-bottom: 1px;
 }
-.side-nav > li.side-bar-option > button{
+.side-nav  li.side-bar-option > button{
     height: 25px;
     border: solid 1px #333;
 }
