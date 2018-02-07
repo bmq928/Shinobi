@@ -9,7 +9,8 @@
             restrict: 'EA',
             scope: {},
             templateUrl: '/common/directives/navbarTabs/navbarTabs.template.html',
-            link: function (scope, el, attr) {
+            controller: 'navbarTabsCtrl as vm',
+            link: function (scope, el, attr) { //just handle the visual effect
                 var $ = window.jQuery;
                 //default
                 var $firstTab = $('.tab:first')
@@ -21,7 +22,7 @@
                 $indicator = $('.indicator')
                 $indicator.width($firstTab.width());
 
-                //handle slection
+                //handle click slection
                 $('.tab a').on('click', function () {
                     var $this = $(this);
                     var $thisTab = $this.parent();
@@ -33,7 +34,7 @@
                     })
 
 
-                    //selection
+                    //move the indicator (the underline)
                     if (notClickYet) {
                         $indicator.velocity({ "left": calcLeftPos($this) }, { duration: 300, queue: false, easing: 'easeOutQuad' });
                         $indicator.velocity({ "right": calcRightPos($this) }, { duration: 300, queue: false, easing: 'easeOutQuad', delay: 90 });
@@ -43,6 +44,7 @@
                         notClickYet = false;
                     }
 
+                    // add selection
                     $thisTab.prepend($indicator);
                     $this.addClass('active');
                     $indicator.width($thisTab.width());
