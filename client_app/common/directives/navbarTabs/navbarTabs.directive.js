@@ -13,14 +13,14 @@
             link: function (scope, el, attr) { //just handle the visual effect
                 var $ = window.jQuery;
                 //default
-                var $firstTab = $('.tab:first')
+                var defaultTab = getChosenTab();
                 var $indicator;
                 var notClickYet = true;
 
 
-                $firstTab.prepend().prepend('<li class="indicator" width=></li>');
+                defaultTab.prepend().prepend('<li class="indicator" width=></li>');
                 $indicator = $('.indicator')
-                $indicator.width($firstTab.width());
+                $indicator.width(defaultTab.width());
 
                 //handle click slection
                 $('.tab a').on('click', function () {
@@ -60,6 +60,18 @@
                         return Math.floor(el.position().left + $this.scrollLeft());
                     };
                 })
+
+                function getChosenTab(){
+                    var view = scope.$root.curView;
+                    var first =  $('.tab:first');
+
+                    switch(view){
+                        case "PLAYBACK": return first.next();
+                        case "CONFIG" : return first.next().next();
+                    }
+
+                    return first;
+                }
 
             }
         }
