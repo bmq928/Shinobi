@@ -20,5 +20,8 @@
     "angular-materialize": "^0.2.2",
     "angular-resource": "^1.6.9",
     "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "redux-thunk": "^2.2.0"
   }
 }
