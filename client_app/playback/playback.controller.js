@@ -3,7 +3,9 @@
         .module('app')
         .controller('playbackCtrl', playbackCtrl)
 
-    function playbackCtrl(){
+    playbackCtrl.$inject = ['videoSrc']
+    function playbackCtrl(videoSrc){
+        var vm = this;
 
     }
 })()

@@ -18,6 +18,7 @@
   "homepage": "https://github.com/bmq928/Shinobi#readme",
   "dependencies": {
     "angular-materialize": "^0.2.2",
+    "angular-resource": "^1.6.9",
     "express": "^4.16.2"
   }
 }
