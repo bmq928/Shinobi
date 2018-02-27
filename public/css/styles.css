@@ -81,6 +81,15 @@ ul#nav-mobile > li{
     margin-left: 10px;
 }
 
+
+#search-cell input{
+    margin-bottom: 0
+}
+
+#search-cell input[type="submit"]{
+    margin-top: 5px;
+}
+
 /* monitor choose */
 
 .monitor-item{
