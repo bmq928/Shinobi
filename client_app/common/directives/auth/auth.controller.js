@@ -5,6 +5,8 @@
 
     authCtrl.$inject = ['$rootScope']
     function authCtrl($rootScope){
+        var vm = this;
+
 
     }
 })()

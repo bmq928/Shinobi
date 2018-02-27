@@ -2,12 +2,12 @@
 <div id="auth-desktop" class="hide-on-med-and-down">
     <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li>
-            <a href="" title="Add Monitor" class="waves-effect waves-light btn btn-floating auth-btn">
+            <a href="#add-monitor-modal" title="Add Monitor" class="waves-effect waves-light btn btn-floating auth-btn modal-trigger">
                 <i class="material-icons">add</i>
             </a>
         </li>
         <li>
-            <a href="" title="User" class="waves-effect waves-light  btn btn-floating auth-btn">
+            <a href="#user-modal" title="User" class="waves-effect waves-light  btn btn-floating auth-btn modal-trigger">
                 <i class="material-icons">person</i>
             </a>
         </li>
@@ -19,12 +19,15 @@
     </ul>
 </div>
 
+<user-modal></user-modal>
+<add-monitor-modal></add-monitor-modal>
+
 <!--====================== ipad iphone ver =====================================-->
 
 <div id="auth-mobile" class="row hide-on-large-only">
     <li class="row hide-on-large-only">
         <button class="col s4 m4 l4 waves-effect waves-light btn light-blue darken-2">Add Camera</button>
-        <button class="col s4 m4 l4 waves-effect waves-light btn light-blue darken-2">Login</button>
-        <button class="col s4 m4 l4 waves-effect waves-light btn light-blue darken-2">Register</button>
+        <button class="col s4 m4 l4 waves-effect waves-light btn light-blue darken-2">User</button>
+        <button class="col s4 m4 l4 waves-effect waves-light btn light-blue darken-2">Loggout</button>
     </li>
 </div>
