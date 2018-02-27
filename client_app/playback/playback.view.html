@@ -1,1 +1,23 @@
-<h1>Playback</h1>
+<div ng-if="vm.isLoading" class="centered">
+    <pre-loader></pre-loader>
+</div>
+<div class="main" ng-if="!vm.isLoading">
+    <ul class="medias">
+        <li class="" ng-repeat="v in vm.videos" style="margin-left:5px;">
+            <div class="media-header">
+                <i class="material-icons">movie</i>
+                <span ng-bind="v.mid"></span>
+                <span ng-bind="v.time | date:'HH:mm:ss dd-MM-yyyy'"></span>
+                <a href="">
+                    <i class="material-icons right waves-effect waves-teal">close</i>
+                </a>
+            </div>
+            <div class="media-body">
+                <video width="400" controls>
+                    <source src="{{v.href}}" type="video/mp4"> Your browser does not support HTML5 video.
+                </video>
+            </div>
+        </li>
+
+    </ul>
+</div>

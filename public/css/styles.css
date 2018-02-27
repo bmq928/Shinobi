@@ -162,12 +162,15 @@ ul.medias > li{
     background: #555;
 }
 
-/* userModal */
 
-.user-modal{
-
-}
-
+/* preLoader */
+/* make content center */
+.centered {
+    position: fixed;
+    top: 50%;
+    left: 46%;
+    
+  }
 
 
 
