@@ -13,7 +13,9 @@
                 var $ = window.jQuery;
 
                 // side-nav eff
-                $("#tool-cam").sideNav();
+                $("#tool-cam").sideNav({
+                    
+                });
                 $(".button-collapse").sideNav();
             }
         }

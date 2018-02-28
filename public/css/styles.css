@@ -21,6 +21,9 @@ nav{
     }
   }
 
+/* fix fixed_navbar_with_sideNav */
+.navbar-fixed { z-index: 9999; }
+
 /* authentication btn fix */
 ul#nav-mobile > li{
     width: 55px !important;

@@ -6,7 +6,7 @@
     playbackCtrl.$inject = ['mediaSrc']
     function playbackCtrl(mediaSrc) {
         var vm = this;
-        var rootUrl = 'http://10.0.9.252:252'
+        
 
 
         vm.videos = []
@@ -51,7 +51,7 @@
         }
 
         function createLink(url){
-            return rootUrl + url
+            return mediaSrc.createLink(url)
         }
 
         function getByGroupKey (type, groupKey) {
