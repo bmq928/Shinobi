@@ -6,6 +6,10 @@ body .row{
     margin: 0 0 0 0;
 }
 
+.content{
+    margin-top: 60px;
+}
+
 nav{
     background: #333;
 }
@@ -133,9 +137,6 @@ ul#nav-mobile > li{
 
 /* media */
 
-ul.medias{
-    
-}
 
 ul.medias > li{
     display: inline-block;
@@ -148,8 +149,20 @@ ul.medias > li{
     padding: 0px 5px 0px 5px;
 }
 
-.media-body{
+
+/* .media-body{
     width: 33.333333333%;
+} */
+
+
+
+.media-body iframe {
+    width: 100%;
+    height: 300px;
+}
+
+.media{
+    width: 33.333333333333%;
 }
 
 /* general modal */

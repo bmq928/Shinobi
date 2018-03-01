@@ -1,6 +1,9 @@
+<!-- <div ng-if="vm.isLoading" class="centered">
+    <pre-loader></pre-loader>
+</div> -->
 <div class="main">
     <ul class="medias">
-        <li class="">
+        <li class="media">
             <div class="media-header">
                 <i class="material-icons">camera_alt</i>
                 <span>Monitor 01</span>
@@ -8,52 +11,11 @@
                     <i class="material-icons right waves-effect waves-teal">close</i>
                 </a>
             </div>
+            <!-- just disable media-body -->
+            <!-- just let it here because video and iframe depend on this class -->
             <div class="media-body">
-                <video width="400" controls>
-                    <source src="v.mp4" type="video/mp4"> Your browser does not support HTML5 video.
-                </video>
-            </div>
-        </li>
-        <li class="">
-            <div class="media-header">
-                <i class="material-icons">camera_alt</i>
-                <span>Monitor 02</span>
-                <a href="">
-                    <i class="material-icons right waves-effect waves-teal">close</i>
-                </a>
-            </div>
-            <div class="media-body">
-                <video width="400" controls>
-                    <source src="v.mp4" type="video/mp4"> Your browser does not support HTML5 video.
-                </video>
-            </div>
-        </li>
-        <li class="">
-            <div class="media-header">
-                <i class="material-icons">camera_alt</i>
-                <span>Monitor 03</span>
-                <a href="">
-                    <i class="material-icons right waves-effect waves-teal">close</i>
-                </a>
-            </div>
-            <div class="media-body">
-                <video width="400" controls>
-                    <source src="v.mp4" type="video/mp4"> Your browser does not support HTML5 video.
-                </video>
-            </div>
-        </li>
-        <li class="">
-            <div class="media-header">
-                <i class="material-icons">camera_alt</i>
-                <span>Monitor 04</span>
-                <a href="">
-                    <i class="material-icons right waves-effect waves-teal">close</i>
-                </a>
-            </div>
-            <div class="media-body">
-                <video width="400" controls>
-                    <source src="v.mp4" type="video/mp4"> Your browser does not support HTML5 video.
-                </video>
+                
+                <iframe src="{{vm.link}}" width="500px" height="300px" frameborder="0"></iframe>
             </div>
         </li>
 
