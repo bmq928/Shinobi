@@ -7,21 +7,51 @@
     function stream($resource) {
         var rootUrl = 'http://10.0.9.252:252'
         var apiKey = 'FcuQHjPyqXOQtVSDXuFH5kFzeSEydE';
-        
-        
+
         return {
-            byMonitorId: function (mid, groupKey) {
-                mid = mid || 'p404'
-                groupKey = groupKey || 'uet'
-                // return rootUrl + '/' + apiKey +  '/embed/' + groupKey + '/' + mid + '/full';
-                return rootUrl + '/dd96563a40ace53657f75b44197a0649/mjpeg/uet/p404/full'
+            createLink: createLink,
+            getAll: getAll,
+            byMonitorId: byMonitorId
+        }
 
-                // var url = rootUrl + '/' + apiKey +  '/embed/' + groupKey + '/' + mid + '/jquery|fullscreen';
-                // var promise = $resource(url).get().$promise;
-                // console.log(promise);
+        function byMonitorId (mid, groupKey) {
+            mid = mid || 'p404'
+            groupKey = groupKey || 'uet'
+            return rootUrl + '/' + apiKey + '/embed/' + groupKey + '/' + mid + '/jquery|fullscreen';
+            // return rootUrl + '/dd96563a40ace53657f75b44197a0649/mjpeg/uet/p404/full'
 
-                // return promise;
-            }
+            // var url = rootUrl + '/' + apiKey +  '/embed/' + groupKey + '/' + mid + '/jquery|fullscreen';
+            // var promise = $resource(url).get().$promise;
+            // console.log(promise);
+
+            // return promise;
+        }
+
+        function createLink (url) {
+            return rootUrl + url;
+        }
+
+        function getAll (groupKey, callback) {
+            groupKey = groupKey || 'p404'
+            var url = createLink('/'+apiKey + '/monitor/' + groupKey)
+            console.log(url)
+            $resource(url)
+                .get()
+                .$promise
+                .then(function(dat) {
+                    
+                    //get the stream of that monitor
+                    if(Array.isArray(dat)) {
+                        callback(dat.map(function(i){
+                            return byMonitorId(i.mid, groupKey)
+                        }))
+                    } else {
+                        //is a single object
+                        callback([byMonitorId(dat.id)])
+                    }
+                }).catch(function(err){
+                    console.log(err)
+                })
         }
     }
 })()

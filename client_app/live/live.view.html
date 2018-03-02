@@ -3,7 +3,7 @@
 </div> -->
 <div class="main">
     <ul class="medias">
-        <li class="media">
+        <li class="media" ng-repeat="l in vm.links">
             <div class="media-header">
                 <i class="material-icons">camera_alt</i>
                 <span>Monitor 01</span>
@@ -15,7 +15,7 @@
             <!-- just let it here because video and iframe depend on this class -->
             <div class="media-body">
                 
-                <iframe src="{{vm.link}}" width="500px" height="300px" frameborder="0"></iframe>
+                <iframe src="{{l}}" width="500px" height="300px" frameborder="0"></iframe>
             </div>
         </li>
 
