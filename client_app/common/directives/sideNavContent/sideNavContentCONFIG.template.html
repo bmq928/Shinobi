@@ -9,28 +9,9 @@
     </div>
     <div class="side-bar-cell-content">
         <ul>
-            <li class="row">
-                <a href="">Identity</a>
+            <li  class="row" ng-repeat="optionTab in vm.optionTabs" ng-click="vm.goToOption(optionTab)">
+                <a ng-bind="optionTab" ng-click="vm.goToOption(optionTab)"></a>
             </li>
-            <li class="row">
-                <a href="">Input</a>
-            </li>
-            <li class="row">
-                <a href="">Stream</a>
-            </li>
-            <li class="row">                
-                <a href="">Input</a>
-            </li>
-            <li class="row">
-                <a href="">JPEG API Snapshot (cgi-bin)</a>
-            </li>
-            <li class="row">
-                <a href="">Raw H.264 Stream</a>
-            </li>
-            <li class="row">
-                <a href="">Recording</a>
-            </li>
-            
         </ul>
     </div>
 </li>
