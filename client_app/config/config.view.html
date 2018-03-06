@@ -187,7 +187,7 @@
 
     </ul> -->
 
-    <ul ng-repeat="optionTab in vm.optionTabs" style="overflow:visible" id="{{optionTab.title}}" class="collection with-header" >
+    <ul ng-repeat="optionTab in vm.optionTabs" style="overflow:visible" id="{{optionTab.title}}" class="collection with-header">
         <li class="collection-header">
             <h4 ng-bind="optionTab.title"></h4>
             <span>
@@ -205,7 +205,8 @@
                     <select ng-if="option.selectOption.length > 0" style="z-index:1">
                         <option ng-repeat="o in option.selectOption" value="o">{{o}}</option>
                     </select>
-                    <input type="text" ng-if="option.selectOption.length == 0">
+                    <input type="text" value="{{option.curVal}}" ng-if="option.selectOption.length === 0 && option.name !== 'Password'">
+                    <input type="password" value="{{option.curVal}}" ng-if="option.selectOption.length === 0 && option.name === 'Password'">
                 </div>
             </div>
         </li>
