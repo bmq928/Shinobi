@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="materialize-css/dist/css/materialize.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Shinobi</title>
+</head>
+
+<body ng-controller="appCtrl">
+    
+    <navbar></navbar>
+    <div class="content">
+        <div ui-view></div>
+    </div>
+    <fab-button></fab-button>
+
+    <script src="jquery/dist/jquery.js"></script>
+    <script src="materialize-css/dist/js/materialize.js"></script>
+    <script src="angular/angular.js"></script>
+    <script src="angular-resource/angular-resource.js"></script>
+    <script src="angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="app.module.js"></script>
+    <script src="app.config.js"></script>
+    <script src="common/services/mediaSrc.service.js"></script>
+    <script src="common/services/stream.service.js"></script>
+    <script src="app.controller.js"></script>
+    <script src="common/directives/navbar/navbar.controller.js"></script>
+    <script src="common/directives/navbar/navbar.directive.js"></script>
+    <script src="common/directives/navbarTabs/navbarTabs.directive.js"></script>
+    <script src="common/directives/navbarTabs/navbarTabs.controller.js"></script>
+    <script src="common/directives/sideNav/sideNav.directive.js"></script>
+    <script src="common/directives/preLoader/preLoader.directive.js"></script>
+    <script src="common/directives/fabButton/fabButton.directive.js"></script>
+    <script src="common/directives/sideNav/sideNav.controller.js"></script>
+    <script src="common/directives/sideNavContent/sideNavContent.directive.js"></script>
+    <script src="common/directives/sideNavContent/sideNavContent.controller.js"></script>
+    <script src="common/directives/sideNavOption/sideNavOption.directive.js"></script>
+    <script src="common/directives/sideNavOption/sideNavOption.controller.js"></script>
+    <script src="common/directives/auth/auth.directive.js"></script>
+    <script src="common/directives/auth/auth.controller.js"></script>
+    <script src="common/directives/auth/userModal/userModal.directive.js"></script>
+    <script src="common/directives/auth/addMonitorModal/addMonitorModal.directive.js"></script>
+    <script src="live/live.controller.js"></script>
+    <script src="playback/playback.controller.js"></script>
+    <script src="config/config.controller.js"></script>
+    
+</body>
+
+</html>
