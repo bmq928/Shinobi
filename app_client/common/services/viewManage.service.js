@@ -23,7 +23,12 @@
                     default: throw new Error('invalid number')
                 }
 
-                if(1 <= view && view <= 3) $rootScope.$emit(events.CHANGE_VIEW, $rootScope.CUR_VIEW);
+                if(1 <= view && view <= 3) $rootScope.$emit(events.CHANGE_VIEW, $rootScope.CUR_VIEW);                
+            },
+            shouldChangeView: function(callback){
+                $rootScope.$on(events.CHANGE_VIEW, function(e, curView){
+                    callback(curView)
+                })
             }
         }
     }
