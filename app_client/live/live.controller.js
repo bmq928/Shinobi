@@ -3,16 +3,27 @@
         .module('app')
         .controller('liveCtrl', liveCtrl)
 
-
-    function liveCtrl($sce) {
+    liveCtrl.$inject = ['$sce', 'stream']
+    function liveCtrl($sce, stream) {
         var vm = this;
+        var groupKey = 'uet'
 
-        vm.links = ['http://10.0.9.252:252/FcuQHjPyqXOQtVSDXuFH5kFzeSEydE/embed/uet/p404/jquery%7Cfullscreen',
-            'http://10.0.9.252:252/FcuQHjPyqXOQtVSDXuFH5kFzeSEydE/embed/uet/p404/jquery%7Cfullscreen',
-            'http://10.0.9.252:252/FcuQHjPyqXOQtVSDXuFH5kFzeSEydE/embed/uet/p404/jquery%7Cfullscreen',
-            'http://10.0.9.252:252/FcuQHjPyqXOQtVSDXuFH5kFzeSEydE/embed/uet/p404/jquery%7Cfullscreen',
-            'http://10.0.9.252:252/FcuQHjPyqXOQtVSDXuFH5kFzeSEydE/embed/uet/p404/jquery%7Cfullscreen',
-            'http://10.0.9.252:252/FcuQHjPyqXOQtVSDXuFH5kFzeSEydE/embed/uet/p404/jquery%7Cfullscreen'
-        ].map(function (link) { return $sce.trustAsResourceUrl(link) })
+        vm.links = []
+        vm.isLoading = isLoading()
+
+        stream.getAll(groupKey, function(links){
+            vm.links = links.map(function(link){
+                console.log(link)
+                return makeLinkForIFrame(link)
+            })
+        })
+
+        function makeLinkForIFrame (link){
+            return $sce.trustAsResourceUrl(link)
+        }
+
+        function isLoading() {
+            return vm.links.length === 0;
+        }
     }
 })()
