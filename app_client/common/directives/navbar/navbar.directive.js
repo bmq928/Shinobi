@@ -6,9 +6,7 @@
                 restrict: 'E',
                 templateUrl: '/common/directives/navbar/navbar.template.html',
                 controller: 'navbarCtrl as vm',
-                scope: {
-                    view: '='
-                },
+                scope: {},
                 link: function(scope, el, attr){
                     
                 }

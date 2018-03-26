@@ -7,12 +7,16 @@
     function navbarCtrl(viewManage) {
         var vm = this;
 
+        //initial 
         vm.curView = viewManage.getCurView();
         console.log(vm.curView);
 
+        //update view on title
         viewManage.shouldChangeView(function(view){
             vm.curView = view;
         });
+
+        //tool for each view
 
 
         // $timeout(function(){

@@ -1,0 +1,18 @@
+.media{
+    padding:0;margin:0;
+    list-style:none;
+    border-radius:1px;
+    color:White;
+}
+
+.media-header{
+    background:purple;
+    border-right:white solid 0.05px;
+    padding-right: 5px;
+}
+.media-header a {
+    color:goldenrod;
+}
+.media-header .monitor-tool i{
+    font-size: 20px;
+}

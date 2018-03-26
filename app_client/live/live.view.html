@@ -1,1 +1,17 @@
-<h1>live</h1>
+<ul class="row">
+    <li class="col-sm-6 col-md-4 col-lg-4 media"
+        ng-repeat="l in vm.links track by $index">
+
+        <div class="media-header">
+            <!-- tittle of monitor -->
+            <span style="margin-left:5px;">dslkaf</span>
+            <!-- tool of a monitor -->
+            <span class="pull-right monitor-tool">
+                <a href="" title="show info of current monitor"><i class="material-icons">info</i></a>
+                <a href="" title="flash on"><i class="material-icons">flash_on</i></a>
+                <a href="" title="fullscreen"><i class="material-icons">fullscreen</i></a>
+            </span>
+        </div>
+        <iframe src="{{l}}" frameborder="0" width="100%" height="250px"></iframe>
+    </li>
+</ul>
