@@ -8,22 +8,30 @@
         var vm = this;
         var groupKey = 'uet'
 
-        vm.links = []
-        vm.isLoading = isLoading()
+        vm.monitors = []
+        vm.flashCur = 'flash_on'
 
-        stream.getAll(groupKey, function(links){
-            vm.links = links.map(function(link){
-                console.log(link)
-                return makeLinkForIFrame(link)
+        stream.getAll(groupKey, function (monitors) {
+            vm.monitors = monitors.map(function (m) {
+                return {
+                    mid: m.mid,
+                    link: $sce.trustAsResourceUrl(m.link) //make link valid for iframe tag
+                }
             })
         })
 
-        function makeLinkForIFrame (link){
-            return $sce.trustAsResourceUrl(link)
+
+        vm.flashClick = function () {
+            switch (vm.flashCur) {
+                case 'flash_on': vm.flashCur = 'flash_off'; break;
+                case 'flash_off': vm.flashCur = 'flash_auto'; break;
+                case 'flash_auto': vm.flashCur = 'flash_on'; break;
+            }
         }
 
-        function isLoading() {
-            return vm.links.length === 0;
+        vm.showInfo = function(mid){
+            
         }
+
     }
 })()

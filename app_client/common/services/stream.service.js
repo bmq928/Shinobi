@@ -43,13 +43,24 @@
                     //get the stream of that monitor
                     if(Array.isArray(dat)) {
                         callback(dat.map(function(i){
-                            return byMonitorId(i.mid, monitorId)
+                            return {
+                                mid: i.mid,
+                                link: byMonitorId(i.mid, monitorId)
+                            }
                         }))
                     } else {
                         //is a single object
                         //just to make an array with one element
                         //for the right structure
-                        callback([byMonitorId(dat.id)])
+                        // callback([byMonitorId(dat.id)])
+                        // callback([{
+                        //     mid: dat.id,
+                        //     link: byMonitorId(i.mid, monitorId)
+                        // }])
+                        callback([{
+                            mid: dat.mid,
+                            link: byMonitorId(dat.mid, monitorId)
+                        }])
                     }
                 }).catch(function(err){
                     console.log(err)
