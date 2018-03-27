@@ -10,6 +10,7 @@
 
         vm.monitors = []
         vm.flashCur = 'flash_on'
+        vm.targetMonitor = null
 
         stream.getAll(groupKey, function (monitors) {
             vm.monitors = monitors.map(function (m) {
@@ -31,10 +32,15 @@
 
         vm.showInfo = function (mid) {
             monitor.getInfo(mid, function (err, data) {
-                if(err) console.error(err);
+                if(err) return console.error(err);
                 
+                vm.targetMonitor = data;
+                console.log(data);
             })
         }
 
+        vm.endShowInfo = function(){
+            vm.targetMonitor = null;
+        }
     }
 })()
