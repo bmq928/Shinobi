@@ -68,9 +68,9 @@ module.exports.allocateMonitor = (req, res) => {
                     })
                 })
                 .catch(err => {
-                    console.log('from user.save.catch')
+                    console.log('from user.save.catch');
                     console.log(err);
-                    if (err) res.status(400).json({ message: err.toString() })
+                    if (err) res.status(400).json({ message: err.toString() });
                 })
         }
 
@@ -92,7 +92,7 @@ module.exports.unallocateMonitor = (req, res) => {
         if (err) return res.status(401).json(err);
         if (!uid) return res.status(400).json({ message: 'user id is required' });
         if (!mid) return res.status(400).json({ message: 'monitor id is required' });
-        if (uid === rootUser._id) return res.status(400).json({ message: 'cannot unallocate from root-user' });
+        // if (uid === rootUser._id) return res.status(400).json({ message: 'cannot unallocate from root-user' });
 
         User.findById(uid, (err, user) => {
             console.log(err)

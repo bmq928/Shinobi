@@ -3,8 +3,8 @@
         .module('app')
         .controller('liveCtrl', liveCtrl)
 
-    liveCtrl.$inject = ['$sce', 'stream']
-    function liveCtrl($sce, stream) {
+    liveCtrl.$inject = ['$sce', 'stream', 'monitor']
+    function liveCtrl($sce, stream, monitor) {
         var vm = this;
         var groupKey = 'uet'
 
@@ -29,8 +29,11 @@
             }
         }
 
-        vm.showInfo = function(mid){
-            
+        vm.showInfo = function (mid) {
+            monitor.getInfo(mid, function (err, data) {
+                if(err) console.error(err);
+                
+            })
         }
 
     }
