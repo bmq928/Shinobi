@@ -3,8 +3,10 @@
         .module('app')
         .factory('authentication', authentication)
 
-    authentication.$inject = ['$http']
-    function authentication($http) {
+    authentication.$inject = ['$http', '$rootScope']
+    function authentication($http, $rootScope) {
+
+        var LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 
         return {
             login: function (mail, password, success, fail) {
@@ -18,6 +20,7 @@
                     .then(function(res){
                         var token = res.data.token;
                         success(token)
+                        $rootScope.$emit(LOGIN_SUCCESS);
                     })
                     .catch(function(err){
                         fail(err.data.message)
@@ -30,6 +33,11 @@
             },
             logout: function(){
                 localStorage.removeItem('jwt-token');
+            },
+            onLoginSuccess: function(callback){
+                $rootScope.$on(LOGIN_SUCCESS, function(e, data){
+                    callback(data);
+                })
             }
         }
     }

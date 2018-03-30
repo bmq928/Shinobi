@@ -27,6 +27,7 @@
                 .login(vm.mail, vm.password
                 , function(token){
                     localStorage.setItem('jwt-token',token);
+                    vm.navErr = '';
                 }, function(err){
                     vm.navErr = err;
                     console.log(vm.navErr)

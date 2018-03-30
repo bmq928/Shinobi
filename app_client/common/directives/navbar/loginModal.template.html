@@ -1,6 +1,13 @@
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" style="z-index:1042;">
         <div class="loginmodal-container">
+            <!-- this btn is just for click in directiv -->
+            <button 
+             type="button"
+             class="close"
+             id="login-modal-close" 
+             data-dismiss="modal"
+             style="color:black;">&times;</button>
             <h1>Login to Your Account</h1>
             <br>
             <span ng-bind="vm.navErr" class="text-danger"></span>
