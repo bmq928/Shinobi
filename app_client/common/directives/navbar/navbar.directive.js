@@ -17,6 +17,7 @@
                     .onLoginSuccess(function () {
                         $('#login-modal-close').click()
                         // console.log('close')
+                        // console.log(authentication.getEmail());
                     })
             }
         }
