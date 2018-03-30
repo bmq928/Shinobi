@@ -1,0 +1,23 @@
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="z-index:1042;">
+        <div class="loginmodal-container">
+            <h1>Login to Your Account</h1>
+            <br>
+            <span ng-bind="vm.navErr" class="text-danger"></span>
+            <form>
+                <input type="text" name="mail" ng-model="vm.mail" placeholder="mail">
+                <input type="password" name="password" ng-model="vm.password" placeholder="Password">
+                <input
+                 type="submit"
+                 name="login"
+                 class="login loginmodal-submit"
+                 value="Login"
+                 ng-click="vm.login()">
+            </form>
+
+            <!-- <div class="login-help">
+                <a href="#">Forgot Password</a>
+            </div> -->
+        </div>
+    </div>
+</div>

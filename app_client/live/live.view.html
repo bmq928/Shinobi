@@ -6,7 +6,7 @@
             <span style="margin-left:5px;">dslkaf</span>
             <!-- tool of a monitor -->
             <span class="pull-right monitor-tool">
-                <a href="" title="show info of current monitor" ng-click="vm.showInfo(m.mid)" data-toggle="modal" data-target="#myModal">
+                <a href="" title="show info of current monitor" ng-click="vm.showInfo(m.mid)" data-toggle="modal" data-target="#infoModal">
                     <i class="material-icons">info</i>
                 </a>
                 <a href="" title="flash on" ng-click="vm.flashClick()">
@@ -21,10 +21,9 @@
     </li>
 </ul>
 <!--=================== show info modal ======================= -->
-<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
-<div class="modal fade" id="myModal" role="dialog" data-backdrop="static">
+<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#infoModal">Open Modal</button> -->
+<div class="modal fade" id="infoModal" role="dialog" data-backdrop="static">
     <div class="modal-dialog">
-
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
