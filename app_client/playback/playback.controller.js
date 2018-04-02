@@ -8,15 +8,17 @@
 
         var vm = this;
 
-        vm.videos = []
+        vm.videos = [];
+        vm.targetVideo = null; //just for showInfo method
 
-        init()
-
-        function init() {
-            video.getAllByMid('p404', function (videos) {
-                console.log(videos);
-                vm.videos = videos;
-            })
+        //init
+        video.getAllByMid('p404', function (videos) {
+            console.log(videos);
+            vm.videos = videos;
+        })
+        
+        vm.showInfo = function(video){
+            vm.targetVideo = video;
         }
     }
 })()

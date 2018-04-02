@@ -7,7 +7,7 @@
             <span style="margin-left:3px;">{{v.time | date:"': 'MM/dd/yyyy 'at' h:mma"}}</span>
             <!-- tool of a monitor -->
             <span class="pull-right monitor-tool">
-                <a href="" title="show info this video" ng-click="vm.showInfo(v.mid)" data-toggle="modal" data-target="#infoModal">
+                <a href="" title="show info this video" ng-click="vm.showInfo(v)" data-toggle="modal" data-target="#infoModal">
                     <i class="material-icons">info</i>
                 </a>
                 <!-- <a href="{{v.href}}" title="fullscreen" target="_blank">
@@ -21,3 +21,41 @@
         </video>
     </li>
 </ul>
+
+<!--=============== video info modal ===============================-->
+<!-- same id as in live mode -->
+<!-- but not neccessary -->
+<div class="modal fade" id="infoModal" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                <h4 class="modal-title">Video Infomation</h4>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <li class="row">
+                        <div class="col-sm-2 col-md-2 col-lg-2">MonitorID: </div>
+                        <div class="col-sm-8 col-md-8 col-lg-8" ng-bind="vm.targetVideo.mid"></div>
+                    </li>
+                    <!-- <li class="row">
+                        <div class="col-sm-2 col-md-2 col-lg-2">Group Key: </div>
+                        <div class="col-sm-8 col-md-8 col-lg-8" ng-bind="vm.targetVideo.ke"></div>
+                    </li> -->
+                    <li class="row">
+                        <div class="col-sm-2 col-md-2 col-lg-2">Day: </div>
+                        <div class="col-sm-8 col-md-8 col-lg-8">{{vm.targetVideo.time | date:"MM/dd/yyyy 'at' h:mma"}}</div>
+                    </li>
+                    <li class="row">
+                        <div class="col-sm-2 col-md-2 col-lg-2">Size: </div>
+                        <div class="col-sm-8 col-md-8 col-lg-8" ng-bind="(vm.targetVideo.size) + ' KB'"></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.endShowInfo()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
