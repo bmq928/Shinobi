@@ -27,5 +27,6 @@ route.get('/alMonitorsByMail', authMid, adminCtrl.alMonitorsByMail);
 route.get('/getAllMonitors', authMid, normalUserCtrl.listAllMonitor)
 route.get('/getAllMonitorStreamByMail', authMid, normalUserCtrl.listAllStreamByMail)
 route.get('/getMonitorById', authMid, normalUserCtrl.getMonitorById)
+route.get('/getAllVideoByMid', authMid, normalUserCtrl.getVideoOfAMonitor)
 
 module.exports = route;

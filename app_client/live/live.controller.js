@@ -5,14 +5,13 @@
 
     liveCtrl.$inject = ['$sce', 'stream', 'monitor']
     function liveCtrl($sce, stream, monitor) {
-        var vm = this;
-        var groupKey = 'uet'
+        var vm = this;        
 
         vm.monitors = []
         vm.flashCur = 'flash_on'
         vm.targetMonitor = null
 
-        stream.getAll(groupKey, function (monitors) {
+        stream.getAll(function (monitors) {
             vm.monitors = monitors.map(function (m) {
                 return {
                     mid: m.mid,
