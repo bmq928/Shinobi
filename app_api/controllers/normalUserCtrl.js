@@ -37,7 +37,7 @@ module.exports.listAllStreamByMail = (req, res) => {
 
             if (err) res.status(500).json({ message: 'Internal error' });
             else if (!alMonitors) res.status(404).json({ message: 'no monitors allow' });
-            else res.status(200).json({data: returnJson });
+            else res.status(200).json({ data: returnJson });
         })
 
 }
@@ -91,9 +91,23 @@ module.exports.getVideoOfAMonitor = (req, res) => {
 
                 if (err) return res.json(err).status(400);
 
-                let {videos} = JSON.parse(resp.body)
-                // console.log(videos);
-                res.json(videos).status(200);
+                //parse json
+                //get videos attr from json
+                //map
+                let videos  = JSON
+                    .parse(resp.body)
+                    .videos
+                    .map(v => {
+                        return {
+                            ...v,
+                            href: DOMAIN + v.href
+                        }
+                    })
+                
+
+                res.status(200).json({videos})
+
+
             })
 
         })

@@ -9,7 +9,8 @@
             getAll: function (callback) {
                 var url = '/api/getAllMonitorStreamByMail'
                 var token = localStorage.getItem('jwt-token');
-                $resource(url, {}, {
+
+                return $resource(url, {}, {
                     get: {
                         method: 'GET',
                         headers: { 'Authorization': 'Bearer ' + token }

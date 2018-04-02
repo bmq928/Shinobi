@@ -1,1 +1,23 @@
-<h1>playback</h1>
+<ul class="row">
+    <li class="col-sm-6 col-md-4 col-lg-4 media" ng-repeat="v in vm.videos track by $index">
+
+        <div class="media-header">
+            <!-- tittle of monitor -->
+            <span style="margin-left:5px;" ng-bind="v.mid"></span>
+            <span style="margin-left:3px;">{{v.time | date:"': 'MM/dd/yyyy 'at' h:mma"}}</span>
+            <!-- tool of a monitor -->
+            <span class="pull-right monitor-tool">
+                <a href="" title="show info this video" ng-click="vm.showInfo(v.mid)" data-toggle="modal" data-target="#infoModal">
+                    <i class="material-icons">info</i>
+                </a>
+                <!-- <a href="{{v.href}}" title="fullscreen" target="_blank">
+                    <i class="material-icons">fullscreen</i>
+                </a> -->
+            </span>
+        </div>
+        <!-- <iframe src="{{v.link}}" frameborder="0" width="100%" height="250px"></iframe> -->
+        <video width="100%" height="250%" controls>
+            <source src="{{v.href}}">
+        </video>
+    </li>
+</ul>
