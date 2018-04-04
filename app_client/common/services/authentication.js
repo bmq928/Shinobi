@@ -7,6 +7,7 @@
     function authentication($http, $rootScope) {
 
         var LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+        var LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 
         return {
             login: function (mail, password, success, fail) {
@@ -33,9 +34,15 @@
             },
             logout: function(){
                 localStorage.removeItem('jwt-token');
+                $rootScope.$emit(LOGOUT_SUCCESS);
             },
             onLoginSuccess: function(callback){
                 $rootScope.$on(LOGIN_SUCCESS, function(e, data){
+                    callback(data);
+                })
+            },
+            onLogoutSuccess: function(callback){
+                $rootScope.$on(LOGOUT_SUCCESS, function(e, data){
                     callback(data);
                 })
             },
