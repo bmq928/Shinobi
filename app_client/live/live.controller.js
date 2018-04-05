@@ -20,12 +20,15 @@
         })
 
 
-        vm.flashClick = function () {
-            switch (vm.flashCur) {
-                case 'flash_on': vm.flashCur = 'flash_off'; break;
-                case 'flash_off': vm.flashCur = 'flash_auto'; break;
-                case 'flash_auto': vm.flashCur = 'flash_on'; break;
+        vm.flashClick = function (id) {
+            switch (vm.flashCur[id]) {
+                case 'flash_on': vm.flashCur[id] = 'flash_off'; break;
+                case 'flash_off': vm.flashCur[id] = 'flash_auto'; break;
+                case 'flash_auto': vm.flashCur[id] = 'flash_on'; break;
+
+                default: vm.flashCur[id] = 'flash_on';
             }
+            
         }
 
         vm.showInfo = function (mid) {
@@ -44,19 +47,24 @@
 
         function preProcess() {
             vm.monitors = []
-            vm.flashCur = 'flash_on'
+            vm.flashCur = {}
             vm.targetMonitor = null
         }
 
         function init() {
             stream.getAll(function (monitors) {
                 vm.monitors = monitors.map(function (m) {
+
+                    vm.flashCur[m.mid] = 'flash_on';
+
                     return {
                         mid: m.mid,
                         link: $sce.trustAsResourceUrl(m.link) //make link valid for iframe tag
                     }
                 })
             })
+
+
         }
     }
 })()
