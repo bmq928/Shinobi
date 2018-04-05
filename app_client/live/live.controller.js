@@ -41,6 +41,7 @@
             vm.targetMonitor = null;
         }
 
+
         function preProcess() {
             vm.monitors = []
             vm.flashCur = 'flash_on'

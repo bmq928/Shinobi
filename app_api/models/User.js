@@ -6,12 +6,12 @@ const jwt = require('jsonwebtoken');
 
 
 const UserSchema = new Schema({
-    mail        : { type: String, required: true },
-    password    : { type: String, required: true },
-    ke          : { type: String },  // 
-    detail      : String,
-    isRoot      : { type: Boolean, required: true },
-    alMonitors  : { type: [String], default: [] },  // allowed monitor to access(list monitor id of shinobi, not $id of this db)
+    mail: { type: String, required: true },
+    password: { type: String, required: true },
+    ke: { type: String },  // 
+    detail: String,
+    isRoot: { type: Boolean, required: true },
+    alMonitors: { type: [String], default: [] },  // allowed monitor to access(list monitor id of shinobi, not $id of this db)
     _hashAlready: { type: Boolean, default: false }
     // monitorOption       // not use right now
 })
@@ -70,9 +70,9 @@ const UserSchema = new Schema({
 UserSchema.pre('save', function (next) {
     let user = this;
     if (!user.password) return next();
-    if(user._hashAlready) return next()
+    if (user._hashAlready) return next()
 
-    
+
     bcrypt.genSalt((err, salt) => {
         if (err) return next(err);
         bcrypt.hash(user.password, salt, (error, hash) => {
@@ -93,8 +93,8 @@ UserSchema.methods.generateHash = function (password) {
 }
 UserSchema.methods.validPassword = function (password, callback) {
     bcrypt
-        .compare(password, this.password, (err, same) =>{
-            if(err) callback(err, null)
+        .compare(password, this.password, (err, same) => {
+            if (err) callback(err, null)
             else callback(null, same)
         })
 }
@@ -104,19 +104,17 @@ UserSchema.methods.isRootUser = function () {
 UserSchema.methods.addMonitor = function (mid) {
     let alMonitors = this.alMonitors;
 
-    if(alMonitors.indexOf(mid) === -1) alMonitors.push(mid)
+    if (alMonitors.indexOf(mid) === -1) alMonitors.push(mid)
     else throw new Error('this monitor have already allowed')
 }
-UserSchema.methods.generateJWT = function(){
+UserSchema.methods.generateJWT = function () {
     const numDayExprire = 7;
+    const { mail, isRoot, ke, detail, alMonitors } = this;
     let exp = new Date();
     exp = exp.setDate(exp.getDate() + 7)
 
     return jwt.sign({
-        // _id: this._id,
-        mail: this.mail,
-        isRoot: this.isRootUser(),
-        exp
+        mail, isRoot, ke, detail, alMonitors, exp
     }, process.env.JWT_SECRET)
 }
 
