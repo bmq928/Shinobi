@@ -14,7 +14,8 @@
 
 #playback mode
 
-- pagination
+- pagination x
+- choose the monitor to show all videos of it
 
 #setting mode
 - change size of monitor
