@@ -46,6 +46,10 @@
 
             vm.curUser = data;
         }
+
+        vm.search = function(){
+            
+        }
         //tool for each view
 
 
