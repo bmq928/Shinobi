@@ -11,3 +11,12 @@
 #live mode
 
 - 
+
+#playback mode
+
+- pagination
+
+#setting mode
+- change size of monitor
+- change video per page
+- change 

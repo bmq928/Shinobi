@@ -31,7 +31,11 @@ app.use(passport.session());
 
 app.use('/api', apiRouter);
 
-app.use((req, res, next) => {
+// app.use('/admin', (req, res, next) => {
+//   res.sendFile(path.join(__dirname, 'app_client', 'admin.html'));
+// })
+
+app.use('/', (req, res, next) => {
   res.sendFile(path.join(__dirname, 'app_client', 'index.html'))
 })
 
