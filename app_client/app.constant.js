@@ -6,5 +6,6 @@ window.constants = {
     },
     EVENTS: {
         CHANGE_VIEW: 'CHANGE_VIEW'
-    }
+    },
+    VIDEO_PER_PAGE: 9
 }

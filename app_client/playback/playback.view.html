@@ -1,5 +1,5 @@
 <ul class="row">
-    <li class="col-sm-6 col-md-4 col-lg-4 media" ng-repeat="v in vm.videos track by $index">
+    <li class="col-sm-6 col-md-4 col-lg-4 media" ng-repeat="v in vm.videos | pagination: vm.curPage">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ">
 
         <div class="media-header">
             <!-- tittle of monitor -->
@@ -25,20 +25,8 @@
 
 <!--===================== pagination =========================-->
 <ul class="pagination pagination-sm">
-    <li>
-        <a>1</a>
-    </li>
-    <li>
-        <a>2</a>
-    </li>
-    <li>
-        <a>3</a>
-    </li>
-    <li>
-        <a>4</a>
-    </li>
-    <li>
-        <a>5</a>
+    <li ng-repeat="page in [] | range: vm.numPage" >
+        <a ng-bind="page" ng-click="vm.changePage(page)"></a>
     </li>
 </ul>
 
