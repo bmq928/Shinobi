@@ -4,6 +4,6 @@
         .controller('settingCtrl', settingCtrl)
 
     function settingCtrl(){
-
+        
     }
 })()
