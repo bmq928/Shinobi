@@ -5,13 +5,18 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const apiRouter = require('./app_api/routes/route')
+// const apiRouter = require('./app_server/api/routes/route');
+const serverRouter = require('./app_server/routes/route');
 const session = require('express-session')
 let passport = require('passport');
-require('./app_api/models/db')
-require('./app_api/config/passport')
+require('./app_server/api/models/db')
+require('./app_server/api/config/passport')
 
 let app = express();
+
+// view engine setup
+app.set('views', path.join(__dirname, 'app_server', 'views'));
+app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -26,18 +31,22 @@ app.use(session({
   saveUninitialized : false, //force a session to be saved
   resave            : false  //
 }))
+
+
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/api', apiRouter);
+app.use('/', serverRouter);
+// app.use('/api', apiRouter);
+
 
 // app.use('/admin', (req, res, next) => {
 //   res.sendFile(path.join(__dirname, 'app_client', 'admin.html'));
 // })
 
-app.use('/', (req, res, next) => {
-  res.sendFile(path.join(__dirname, 'app_client', 'index.html'))
-})
+// app.use('/', (req, res, next) => {
+//   res.sendFile(path.join(__dirname, 'app_client', 'index.html'))
+// })
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,25 +1,26 @@
 const User = require('../models/User');
 const Monitor = require('../models/Monitor');
-const isRoot = (req, callback) => {
+const isRoot = require('../../helpers/isRootUser');
+// const isRoot = (req, callback) => {
 
-    // console.log(req.payload)
-    // console.log('inside is root')
-    // let id = 'lfkasjd'
-    // if (!id) callback({ message: 'login required' })
-    // else User.findById(id, (err, rootUser) => {
-    //     if (err) callback(err)
-    //     if (!rootUser) callback({ message: 'user invalid' })
-    //     else if (!rootUser.isRoot) callback({ message: 'root user only' }, null)
-    //     else callback(null, rootUser)
-    // });
+//     // console.log(req.payload)
+//     // console.log('inside is root')
+//     // let id = 'lfkasjd'
+//     // if (!id) callback({ message: 'login required' })
+//     // else User.findById(id, (err, rootUser) => {
+//     //     if (err) callback(err)
+//     //     if (!rootUser) callback({ message: 'user invalid' })
+//     //     else if (!rootUser.isRoot) callback({ message: 'root user only' }, null)
+//     //     else callback(null, rootUser)
+//     // });
 
-    let rootUser = req.payload
-    let { mail, isRoot } = rootUser
+//     let rootUser = req.payload
+//     let { mail, isRoot } = rootUser
 
-    if (!rootUser || !mail) callback({ message: 'login required' })
-    else if (!isRoot) callback({ message: 'root user only' }, null)
-    else callback(null, rootUser)
-}
+//     if (!rootUser || !mail) callback({ message: 'login required' })
+//     else if (!isRoot) callback({ message: 'root user only' }, null)
+//     else callback(null, rootUser)
+// }
 
 //allocate monitor
 //id of monitor and user that is allocated is from req.body or param

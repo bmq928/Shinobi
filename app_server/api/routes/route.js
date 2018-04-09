@@ -2,11 +2,15 @@ let route = require('express').Router();
 let adminCtrl = require('../controllers/adminCtrl')
 let authCtrl = require('../controllers/authCtrl')
 let normalUserCtrl = require("../controllers/normalUserCtrl");
-const expressJWT = require('express-jwt')
-const authMid = expressJWT({
-    userProperty: 'payload', //decode userproperty in jwt-structure and pass to req.payload
-    secret: process.env.JWT_SECRET
-})
+// const expressJWT = require('express-jwt')
+// const authMid = expressJWT({
+//     userProperty: 'payload', //decode userproperty in jwt-structure and pass to req.payload
+//     secret: process.env.JWT_SECRET
+// })
+
+//authentication middleware
+const authMid = require('../../middlewares/authentication');
+
 
 route.get('/', (req, res, next) => {
     console.log(req.session)
