@@ -8,6 +8,7 @@
 
         //default value
         var changePassword,
+            changeMail,
             videoPerPage = 9,
             monitorPerPage = 9,
             videoPerRow = 3,
@@ -49,6 +50,10 @@
                 })
 
             return {
+                setMail: function (mail) {
+                    isChange = true;
+                    changeMail = mail;
+                },
                 setChangePassword: function (password) {
                     isChange = true;
                     changePassword = password;
@@ -103,6 +108,7 @@
                         url: '/api/settingPage',
                         headers: { 'Authorization': 'Bearer ' + token },
                         data: {
+                            changeMail: changeMail,
                             changePassword: changePassword,
                             videoPerPage: videoPerPage,
                             monitorPerPage: monitorPerPage,

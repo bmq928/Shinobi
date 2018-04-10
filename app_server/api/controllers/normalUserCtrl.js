@@ -128,7 +128,8 @@ module.exports.getSetting = (req, res) => {
 
 //setting the page
 module.exports.settingPage = (req, res) => {
-    const { changePassword,
+    const { changeMail,
+        changePassword,
         videoPerPage,
         monitorPerPage,
         videoPerRow,
@@ -138,7 +139,8 @@ module.exports.settingPage = (req, res) => {
 
     const { mail } = req.payload;
 
-    if (!changePassword &&
+    if (!changeMail &&
+        !changePassword &&
         !videoPerPage &&
         !monitorPerPage &&
         !videoPerRow &&
@@ -150,6 +152,8 @@ module.exports.settingPage = (req, res) => {
         if (changePassword) {
             user.changePassword(changePassword);
         }
+
+        if(changeMail) user.mail = changeMail; //adding change mail
 
         //obsolate
         // user.options = {
