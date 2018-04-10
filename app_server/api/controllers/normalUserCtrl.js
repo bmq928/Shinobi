@@ -154,6 +154,7 @@ module.exports.settingPage = (req, res) => {
         }
 
         if(changeMail) user.mail = changeMail; //adding change mail
+        if(!user) return res.status(400).json({message: 'mail had changed'});
 
         //obsolate
         // user.options = {
