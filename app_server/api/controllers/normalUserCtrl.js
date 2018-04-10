@@ -94,7 +94,7 @@ module.exports.getVideoOfAMonitor = (req, res) => {
                 //parse json
                 //get videos attr from json
                 //map
-                let videos  = JSON
+                let videos = JSON
                     .parse(resp.body)
                     .videos
                     .map(v => {
@@ -103,12 +103,67 @@ module.exports.getVideoOfAMonitor = (req, res) => {
                             href: DOMAIN + v.href
                         }
                     })
-                
 
-                res.status(200).json({videos})
+
+                res.status(200).json({ videos })
 
 
             })
 
+        })
+}
+
+module.exports.settingPage = (req, res) => {
+    const { changePassword,
+        videoPerPage,
+        monitorPerPage,
+        videoPerRow,
+        monitorPerRow,
+        monitorFilter,
+        videoFilter } = req.body;
+
+    const { mail } = req.payload;
+
+    if (!changePassword &&
+        !videoPerPage &&
+        !monitorPerPage &&
+        !videoPerRow &&
+        !monitorPerRow &&
+        !monitorFilter &&
+        !videoFilter) return res.status(400).json({message: "at least one option should fill"})
+
+        User.findOne({ mail }, (err, user) => {
+            if (changePassword) {
+                user.changePassword(changePassword);
+            }
+
+            //obsolate
+            // user.options = {
+            //     videoPerPage,
+            //     monitorPerPage,
+            //     videoPerRow,
+            //     monitorPerRow,
+            //     monitorFilter,
+            //     videoFilter
+            // }
+
+            if(videoPerPage) user.options.videoPerPage = videoPerPage;
+            if(monitorPerPage) user.options.monitorPerPage = monitorPerPage;
+            if(videoPerRow) user.options.videoPerRow = videoPerRow;
+            if(monitorPerRow) user.options.monitorPerRow = monitorPerRow;
+            if(monitorFilter) user.options.monitorFilter = monitorFilter;
+            if(videoFilter) user.options.videoFilter = videoFilter;
+
+            user.save(err => {
+                if (err) res.status(400).json(err);
+                else res.status(200).json({
+                    videoPerPage,
+                    monitorPerPage,
+                    videoPerRow,
+                    monitorPerRow,
+                    monitorFilter,
+                    videoFilter
+                });
+            })
         })
 }

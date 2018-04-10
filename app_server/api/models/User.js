@@ -4,6 +4,14 @@ const bcrypt = require('bcrypt')
 const name = "User"
 const jwt = require('jsonwebtoken');
 
+const OptionSchema = new Schema({
+    videoPerPage: { type: Number, default: 9 },
+    monitorPerPage: { type: Number, default: 9 },
+    videoPerRow: { type: Number, default: 3 },
+    monitorPerRow: { type: Number, default: 3 },
+    monitorFilter: { type: String, default: "name" },
+    videoFilter: { type: String, default: "name" }
+})
 
 const UserSchema = new Schema({
     mail: { type: String, required: true },
@@ -12,8 +20,17 @@ const UserSchema = new Schema({
     detail: String,
     isRoot: { type: Boolean, required: true },
     alMonitors: { type: [String], default: [] },  // allowed monitor to access(list monitor id of shinobi, not $id of this db)
-    _hashAlready: { type: Boolean, default: false }
-    // monitorOption       // not use right now
+    _hashAlready: { type: Boolean, default: false },
+    options: {
+        type: OptionSchema, default: {
+            videoPerPage: 9,
+            monitorPerPage: 9,
+            videoPerRow: 3,
+            monitorPerRow: 3,
+            monitorFilter: "name",
+            videoFilter: "name"
+        }
+    }
 })
 
 
@@ -88,9 +105,15 @@ UserSchema.pre('save', function (next) {
 })
 
 //do not use any more
-UserSchema.methods.generateHash = function (password) {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(Math.random()))
+// UserSchema.methods.generateHash = function (password) {
+//     return bcrypt.hashSync(password, bcrypt.genSaltSync(Math.random()))
+// }
+
+UserSchema.methods.changePassword = function(password){
+    this.password = password;
+    this._hashAlready = false;
 }
+
 UserSchema.methods.validPassword = function (password, callback) {
     bcrypt
         .compare(password, this.password, (err, same) => {
