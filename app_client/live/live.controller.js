@@ -3,9 +3,10 @@
         .module('app')
         .controller('liveCtrl', liveCtrl)
 
-    liveCtrl.$inject = ['$sce', 'stream', 'monitor', 'authentication']
-    function liveCtrl($sce, stream, monitor, authentication) {
+    liveCtrl.$inject = ['$sce', 'stream', 'monitor', 'authentication', 'setting']
+    function liveCtrl($sce, stream, monitor, authentication, setting) {
         var vm = this;
+        var settingService;
 
         //init some component with default value
         preProcess();
@@ -28,7 +29,7 @@
 
                 default: vm.flashCur[id] = 'flash_on';
             }
-            
+
         }
 
         vm.showInfo = function (mid) {
@@ -46,12 +47,17 @@
 
 
         function preProcess() {
-            vm.monitors = []
-            vm.flashCur = {}
-            vm.targetMonitor = null
+            vm.monitors = [];
+            vm.flashCur = {};
+            vm.targetMonitor = null;
+            vm.setting = {};
+            settingService = setting.init();
         }
 
         function init() {
+
+            vm.setting = settingService.getSetting();
+
             stream.getAll(function (monitors) {
                 vm.monitors = monitors.map(function (m) {
 
@@ -63,8 +69,6 @@
                     }
                 })
             })
-
-
         }
     }
 })()

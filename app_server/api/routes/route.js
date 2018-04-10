@@ -33,5 +33,6 @@ route.get('/getAllMonitorStreamByMail', authMid, normalUserCtrl.listAllStreamByM
 route.get('/getMonitorById', authMid, normalUserCtrl.getMonitorById);
 route.get('/getAllVideoByMid', authMid, normalUserCtrl.getVideoOfAMonitor);
 route.post('/settingPage', authMid, normalUserCtrl.settingPage);
+route.get('/getSetting', authMid, normalUserCtrl.getSetting);
 
 module.exports = route;

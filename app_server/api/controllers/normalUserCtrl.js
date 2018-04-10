@@ -113,6 +113,20 @@ module.exports.getVideoOfAMonitor = (req, res) => {
         })
 }
 
+
+//get setting 
+module.exports.getSetting = (req, res) => {
+    const { mail } = req.payload;
+
+    User
+        .findOne({ mail }, (err, user) => {
+            if (err) return res.status(400).json(err);
+            else if (!user) return res.status(400).json({message: 'no user founded'});
+            else return res.status(200).json({options: user.options});
+        })
+}
+
+//setting the page
 module.exports.settingPage = (req, res) => {
     const { changePassword,
         videoPerPage,
@@ -130,40 +144,35 @@ module.exports.settingPage = (req, res) => {
         !videoPerRow &&
         !monitorPerRow &&
         !monitorFilter &&
-        !videoFilter) return res.status(400).json({message: "at least one option should fill"})
+        !videoFilter) return res.status(400).json({ message: "at least one option should fill" })
 
-        User.findOne({ mail }, (err, user) => {
-            if (changePassword) {
-                user.changePassword(changePassword);
-            }
+    User.findOne({ mail }, (err, user) => {
+        if (changePassword) {
+            user.changePassword(changePassword);
+        }
 
-            //obsolate
-            // user.options = {
-            //     videoPerPage,
-            //     monitorPerPage,
-            //     videoPerRow,
-            //     monitorPerRow,
-            //     monitorFilter,
-            //     videoFilter
-            // }
+        //obsolate
+        // user.options = {
+        //     videoPerPage,
+        //     monitorPerPage,
+        //     videoPerRow,
+        //     monitorPerRow,
+        //     monitorFilter,
+        //     videoFilter
+        // }
 
-            if(videoPerPage) user.options.videoPerPage = videoPerPage;
-            if(monitorPerPage) user.options.monitorPerPage = monitorPerPage;
-            if(videoPerRow) user.options.videoPerRow = videoPerRow;
-            if(monitorPerRow) user.options.monitorPerRow = monitorPerRow;
-            if(monitorFilter) user.options.monitorFilter = monitorFilter;
-            if(videoFilter) user.options.videoFilter = videoFilter;
+        if (videoPerPage) user.options.videoPerPage = videoPerPage;
+        if (monitorPerPage) user.options.monitorPerPage = monitorPerPage;
+        if (videoPerRow) user.options.videoPerRow = videoPerRow;
+        if (monitorPerRow) user.options.monitorPerRow = monitorPerRow;
+        if (monitorFilter) user.options.monitorFilter = monitorFilter;
+        if (videoFilter) user.options.videoFilter = videoFilter;
 
-            user.save(err => {
-                if (err) res.status(400).json(err);
-                else res.status(200).json({
-                    videoPerPage,
-                    monitorPerPage,
-                    videoPerRow,
-                    monitorPerRow,
-                    monitorFilter,
-                    videoFilter
-                });
-            })
+        user.save(err => {
+            if (err) res.status(400).json(err);
+            else res.status(200).json({
+                setting: user.options
+            });
         })
+    })
 }
