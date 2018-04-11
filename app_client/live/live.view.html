@@ -1,5 +1,6 @@
 <ul class="row">
-    <li class="col-sm-6 col-md-4 col-lg-4 media" ng-repeat="m in vm.monitors track by $index">
+    <!-- <li class="col-sm-6 col-md-4 col-lg-4 media" ng-repeat="m in vm.monitors track by $index"> -->
+    <li class="{{vm.videoClass}}" ng-repeat="m in vm.monitors track by $index">
 
         <div class="media-header">
             <!-- tittle of monitor -->
@@ -10,8 +11,8 @@
                     <i class="material-icons">info</i>
                 </a>
                 <a href="" title="flash on" ng-click="vm.flashClick(m.mid)">
-                        <i class="material-icons" ng-bind="vm.flashCur[m.mid]"></i>
-                    </a>
+                    <i class="material-icons" ng-bind="vm.flashCur[m.mid]"></i>
+                </a>
                 <a href="">
                     <i class="material-icons">build</i>
                 </a>
@@ -20,7 +21,8 @@
                 </a>
             </span>
         </div>
-        <iframe src="{{m.link}}" frameborder="0" width="100%" height="250px"></iframe>
+        <iframe ng-if="vm.setting.monitorPerRow === 1" src="{{m.link}}" frameborder="0" width="100%" height="500px"></iframe>
+        <iframe ng-if="vm.setting.monitorPerRow !== 1" src="{{m.link}}" frameborder="0" width="100%" height="250px"></iframe>
     </li>
 </ul>
 <!--=================== show info modal ======================= -->

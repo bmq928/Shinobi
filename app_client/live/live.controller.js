@@ -59,8 +59,15 @@
             settingService.getSetting(function(err, initialSetting){
                 if(err) return console.log(err);
 
+                //init setting
                 vm.setting.monitorPerPage = initialSetting.monitorPerPage;
                 vm.setting.monitorPerRow = initialSetting.monitorPerRow;
+                vm.videoClass = "col-sm-6 col-md-"
+                        + (12 / vm.setting.monitorPerRow).toString()
+                        + " col-lg-"
+                        + (12 / vm.setting.monitorPerRow).toString()
+                        + " media";
+
                 console.log('setting from live');
                 console.log(vm.setting);
             });
