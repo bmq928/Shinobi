@@ -51,12 +51,19 @@
             vm.flashCur = {};
             vm.targetMonitor = null;
             vm.setting = {};
-            settingService = setting.init();
+            settingService = setting();
         }
 
         function init() {
 
-            vm.setting = settingService.getSetting();
+            settingService.getSetting(function(err, initialSetting){
+                if(err) return console.log(err);
+
+                vm.setting.monitorPerPage = initialSetting.monitorPerPage;
+                vm.setting.monitorPerRow = initialSetting.monitorPerRow;
+                console.log('setting from live');
+                console.log(vm.setting);
+            });
 
             stream.getAll(function (monitors) {
                 vm.monitors = monitors.map(function (m) {

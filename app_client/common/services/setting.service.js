@@ -16,13 +16,7 @@
             monitorFilter = 'name',
             videoFilter = 'name';
 
-
-        return {
-            init: init
-        }
-
-        function init() {
-
+        return function () {
 
             var token = localStorage.getItem('jwt-token');
 
@@ -31,56 +25,58 @@
             //and this variable decide changeSetting is call or not
             var isChange = false;
 
-            //get from database
-            $http({
-                method: 'GET',
-                url: '/api/getSetting',
-                headers: { 'Authorization': 'Bearer ' + token }
-            })
-                .then(function (data) {
-                    if (data.videoPerPage) videoPerPage = data.videoPerPage;
-                    if (data.monitorPerPage) monitorPerPage = data.monitorPerPage;
-                    if (data.videoPerRow) videoPerRow = data.videoPerRow;
-                    if (data.monitorPerRow) monitorPerRow = data.monitorPerRow;
-                    if (data.monitorFilter) monitorFilter = data.monitorFilter;
-                    if (data.videoFilter) videoFilter = data.videoFilter;
-                })
-                .catch(function (err) {
-                    console.log(err);
-                })
-
             return {
                 setMail: function (mail) {
-                    isChange = true;
-                    changeMail = mail;
+                    if (mail) {
+                        isChange = true;
+                        changeMail = mail;
+                    }
                 },
                 setChangePassword: function (password) {
-                    isChange = true;
-                    changePassword = password;
+                    if (password) {
+                        isChange = true;
+                        changePassword = password;
+                    }
                 },
                 setVideoPerPage: function (num) {
-                    isChange = true;
-                    videoPerPage = num;
+                    if (num) {
+                        isChange = true;
+                        console.log(num);
+                        // videoPerPage = parseInt(num);
+                        videoPerPage = num;
+                    }
                 },
                 setMonitorPerPage: function (num) {
-                    isChange = true;
-                    monitorPerPage = num;
+                    if (num) {
+                        isChange = true;
+                        console.log(num);
+                        // monitorPerPage = parseInt(num);
+                        monitorPerPage = num;
+                    }
                 },
                 setVideoPerRow: function (num) {
-                    isChange = true;
-                    videoPerRow = num;
+                    if (num) {
+                        isChange = true;
+                        videoPerRow = num;
+                    }
                 },
                 setMonitorPerRow: function (num) {
-                    isChange = true;
-                    monitorPerRow = num;
+                    if (num) {
+                        isChange = true;
+                        monitorPerRow = num;
+                    }
                 },
                 setMonitorFilter: function (type) {
-                    isChange = true;
-                    monitorFilter = type;
+                    if (type) {
+                        isChange = true;
+                        monitorFilter = type;
+                    }
                 },
                 setVideoFilter: function (type) {
-                    isChange = true;
-                    videoFilter = type;
+                    if (type) {
+                        isChange = true;
+                        videoFilter = type;
+                    }
                 },
                 // getVideoPerPage  : function() {return videoPerPage},
                 // getMonitorPerPage: function() {return monitorPerPage;},
@@ -88,15 +84,45 @@
                 // getMonitorPerRow : function() {return monitorPerRow;},
                 // getMonitorFilter : function() {return monitorFilter;},
                 // getVideoFilter   : function() {return videoFilter;},
-                getSetting: function () {
-                    return {
-                        videoPerPage: videoPerPage,
-                        monitorPerPage: monitorPerPage,
-                        videoPerRow: videoPerRow,
-                        monitorPerRow: monitorPerRow,
-                        monitorFilter: monitorFilter,
-                        videoFilter: videoFilter
-                    }
+                getSetting: function (callback) {
+
+                    //get from database
+                    $http({
+                        method: 'GET',
+                        url: '/api/getSetting',
+                        headers: { 'Authorization': 'Bearer ' + token }
+                    })
+                        .then(function (resp) {
+                            console.log('data from setting');
+                            console.log(resp);
+
+                            if (resp.data.options.videoPerPage) videoPerPage = resp.data.options.videoPerPage;
+                            if (resp.data.options.monitorPerPage) monitorPerPage = resp.data.options.monitorPerPage;
+                            if (resp.data.options.videoPerRow) videoPerRow = resp.data.options.videoPerRow;
+                            if (resp.data.options.monitorPerRow) monitorPerRow = resp.data.options.monitorPerRow;
+                            if (resp.data.options.monitorFilter) monitorFilter = resp.data.options.monitorFilter;
+                            if (resp.data.options.videoFilter) videoFilter = resp.data.options.videoFilter;
+
+                            callback(null, {
+                                videoPerPage: videoPerPage,
+                                monitorPerPage: monitorPerPage,
+                                videoPerRow: videoPerRow,
+                                monitorPerRow: monitorPerRow,
+                                monitorFilter: monitorFilter,
+                                videoFilter: videoFilter
+                            });
+                        })
+                        .catch(function (err) {
+                            callback(err);
+                        })
+                    // return {
+                    //     videoPerPage: videoPerPage,
+                    //     monitorPerPage: monitorPerPage,
+                    //     videoPerRow: videoPerRow,
+                    //     monitorPerRow: monitorPerRow,
+                    //     monitorFilter: monitorFilter,
+                    //     videoFilter: videoFilter
+                    // }
                 },
 
                 //this function only get called if only any set method is get call
@@ -126,6 +152,8 @@
                         })
                 }
             }
+
+
         }
     }
 })()

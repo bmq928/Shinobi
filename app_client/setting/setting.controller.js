@@ -6,7 +6,7 @@
     settingCtrl.$inject = ['setting', 'authentication']
     function settingCtrl(setting, authentication) {
         var vm = this;
-        var settingService = setting.init();
+        var settingService = setting();
         init();
 
         vm.save = function () {
@@ -20,29 +20,34 @@
             settingService.setMonitorFilter(vm.monitorFilter);
             settingService.setVideoFilter(vm.videoFilter);
 
-            settingService.save(function(err, data){
-                if(err) console.log(err);
+            settingService.save(function (err, data) {
+                if (err) console.log(err);
                 else {
-                    authentication.logout();
+                    if (vm.changeMail || vm.changePassword) authentication.logout();
                     console.log(data);
                 }
             })
         }
 
-
         function init() {
-            var initialSetting = settingService.getSetting();
+            settingService.getSetting(function (err, initialSetting) {
 
-            vm.changeMail = null;
-            vm.changePassword = null;
-            vm.videoPerPage = null; //fix ui
-            vm.monitorPerPage = null; //fix ui
-            vm.videoPerRow = initialSetting.videoPerRow.toString();
-            vm.monitorPerRow = initialSetting.monitorPerRow.toString();
-            vm.monitorFilter = initialSetting.monitorFilter;
-            vm.videoFilter = initialSetting.videoFilter;
+                if(err) return console.log(err);    
+                console.log('from setting');
+                console.log(initialSetting);
 
-            console.log(vm.monitorPerRow);
+                vm.changeMail = null;
+                vm.changePassword = null;
+                vm.videoPerPage = null; //fix ui
+                vm.monitorPerPage = null; //fix ui
+                vm.videoPerRow = initialSetting.videoPerRow.toString();
+                vm.monitorPerRow = initialSetting.monitorPerRow.toString();
+                vm.monitorFilter = initialSetting.monitorFilter;
+                vm.videoFilter = initialSetting.videoFilter;
+
+                console.log(vm.monitorPerRow);
+            });
+
         }
 
     }
