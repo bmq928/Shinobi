@@ -1,6 +1,6 @@
 <ul class="row">
     <!-- <li class="col-sm-6 col-md-4 col-lg-4 media" ng-repeat="m in vm.monitors track by $index"> -->
-    <li class="{{vm.videoClass}}" ng-repeat="m in vm.monitors track by $index">
+    <li class="{{vm.videoClass}}" ng-repeat="m in vm.monitors | pagination: vm.curPage: vm.setting.monitorPerPage">
 
         <div class="media-header">
             <!-- tittle of monitor -->
@@ -25,6 +25,15 @@
         <iframe ng-if="vm.setting.monitorPerRow !== 1" src="{{m.link}}" frameborder="0" width="100%" height="250px"></iframe>
     </li>
 </ul>
+
+<!--===================== pagination =========================-->
+<ul class="pagination pagination-sm">
+    <li ng-repeat="page in [] | range: vm.numPage" ng-class="{'active' : page === vm.curPage}">
+        <a ng-bind="page" ng-click="vm.changePage(page)"></a>
+    </li>
+</ul>
+
+
 <!--=================== show info modal ======================= -->
 <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#infoModal">Open Modal</button> -->
 <div class="modal fade" id="infoModal" role="dialog" data-backdrop="static">

@@ -6,7 +6,7 @@
     liveCtrl.$inject = ['$sce', 'stream', 'monitor', 'authentication', 'setting']
     function liveCtrl($sce, stream, monitor, authentication, setting) {
         var vm = this;
-        var settingService;
+        var settingService = setting();
 
         //init some component with default value
         preProcess();
@@ -45,33 +45,23 @@
             vm.targetMonitor = null;
         }
 
+        vm.changePage = function (page) {
+            vm.curPage = page;
+        }
+
 
         function preProcess() {
             vm.monitors = [];
             vm.flashCur = {};
             vm.targetMonitor = null;
             vm.setting = {};
-            settingService = setting();
+            vm.numPage = 0;
+            vm.curPage = 0;
         }
 
         function init() {
 
-            settingService.getSetting(function(err, initialSetting){
-                if(err) return console.log(err);
-
-                //init setting
-                vm.setting.monitorPerPage = initialSetting.monitorPerPage;
-                vm.setting.monitorPerRow = initialSetting.monitorPerRow;
-                vm.videoClass = "col-sm-6 col-md-"
-                        + (12 / vm.setting.monitorPerRow).toString()
-                        + " col-lg-"
-                        + (12 / vm.setting.monitorPerRow).toString()
-                        + " media";
-
-                console.log('setting from live');
-                console.log(vm.setting);
-            });
-
+            initSetting();
             stream.getAll(function (monitors) {
                 vm.monitors = monitors.map(function (m) {
 
@@ -82,7 +72,31 @@
                         link: $sce.trustAsResourceUrl(m.link) //make link valid for iframe tag
                     }
                 })
+
+                vm.numPage = vm.monitors.length / vm.setting.monitorPerPage + 1;
+                vm.curPage = 1;
             })
+
+
+
+
+            function initSetting() {
+                settingService.getSetting(function (err, initialSetting) {
+                    if (err) return console.log(err);
+
+                    //init setting
+                    vm.setting.monitorPerPage = initialSetting.monitorPerPage;
+                    vm.setting.monitorPerRow = initialSetting.monitorPerRow;
+                    vm.videoClass = "col-sm-6 col-md-"
+                        + (12 / vm.setting.monitorPerRow).toString()
+                        + " col-lg-"
+                        + (12 / vm.setting.monitorPerRow).toString()
+                        + " media";
+
+                    console.log('setting from live');
+                    console.log(vm.setting);
+                });
+            }
         }
     }
 })()
