@@ -7,7 +7,7 @@
     function sidebar(viewManage) {
         return {
             restrict: 'E',
-            templateUrl: '/common/directives/sidebar/sidebar.template.html',
+            templateUrl: 'user/common/directives/sidebar/sidebar.template.html',
             controller: 'sidebarCtrl as vm',
             link: function (scope, el, attr) {
 

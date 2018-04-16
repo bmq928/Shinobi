@@ -7,7 +7,7 @@
     function navbar(authentication) {
         return {
             restrict: 'E',
-            templateUrl: '/common/directives/navbar/navbar.template.html',
+            templateUrl: 'user/common/directives/navbar/navbar.template.html',
             controller: 'navbarCtrl as vm',
             scope: {},
             link: function (scope, el, attr) {

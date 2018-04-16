@@ -6,7 +6,7 @@ route.get('/', (req, res) => {
     res.render('../views/index.ejs');
 });
 
-route.get('/admin', authMid, (req, res) => {
+route.get('/admin', (req, res) => {
     res.render('../views/admin.ejs');
 })
 

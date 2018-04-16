@@ -21,3 +21,9 @@
 - change size of monitor
 - change video per page
 - change 
+
+
+#path bug
+
+because admin page is in /admin => ./ refer to index and we asign static folder is admin => admin is at root
+=> use ../ in every path_src to refer

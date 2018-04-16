@@ -26,9 +26,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 //separate app_client to 2 to avoid wrong_path_bugs in angularjs
-app.use(express.static(path.join(__dirname, 'app_client', 'user')));
-app.use(express.static(path.join(__dirname, 'app_client', 'admin')));
-app.use(express.static(path.join(__dirname, 'public')))
+// app.use(express.static(path.join(__dirname, 'app_client', 'user')));
+// app.use(express.static(path.join(__dirname, 'app_client', 'admin')));
+app.use(express.static(path.join(__dirname, 'app_client')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret            : process.env.SECRET || 'SOME_SECRET',
   saveUninitialized : false, //force a session to be saved
