@@ -26,7 +26,9 @@
                 </a>
             </li> -->
 
-            <li ng-repeat="tab in vm.tabs track by $index" class="">
+            <li ng-repeat="tab in vm.tabs track by $index"
+                ng-class="{'active' : tab.title === vm.curTab}"
+                ng-click="vm.tabClick(tab)">
                 <a ui-sref="{{tab.title}}">
                     <i class="material-icons" ng-bind="tab.icon"></i>
                     <p ng-bind="tab.title"></p>
