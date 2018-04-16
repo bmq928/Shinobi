@@ -5,5 +5,14 @@
 
     function monitorCtrl() {
         var vm = this;
+        
+
+        function preProcess() {
+
+        }
+
+        function init(){
+            
+        }
     }
 })()

@@ -27,13 +27,22 @@
             vm.curTab = tab.title;
         }
 
+
+
         function preprocess() {
-            vm.curTab = '';
+            vm.curTab = null;
+
+            //decide curTab via location hash
+            var curTab = location.hash.substr(3);
+            //capitalize the first charecter to match the style of view
+            if(curTab) vm.curTab = curTab[0].toUpperCase()+curTab.substr(1);
+
+            console.log(vm.curTab);
         }
 
         function init() {
             vm.tabs = JSON.parse(vm.options);
-            vm.curTab = vm.tabs[0].title;
+            vm.curTab = vm.curTab || vm.tabs[0].title;
         }
     }
 })()
