@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <h1>Admin</h1>
+    <app></app>
 </body>
 
 <!-- =============== animation and ui ====== -->
@@ -48,8 +48,19 @@
 <script src="../angular-resource/angular-resource.js"></script>
 
 <!-- =========== app ======= -->
-<!-- <script src="app.constant.js"></script> -->
-<script src="../app.module.js"></script>
-<script src="../app.config.js"></script>
+<script src="../admin/app.constant.js"></script>
+<script src="../admin/app.module.js"></script>
+<script src="../admin/app.config.js"></script>
+
+
+<!--============== components ===============-->
+<!-- view -->
+<script src="../admin/components/views/monitor/monitor.controller.js"></script>
+<script src="../admin/components/views/user/user.controller.js"></script>
+<!-- real component -->
+<script src="../admin/components/app/app.component.js"></script>
+<script src="../admin/components/appFooter/appFooter.component.js"></script>
+<script src="../admin/components/sidebar/sidebar.component.js"></script>
+
 
 </html>

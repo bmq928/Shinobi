@@ -1,0 +1,44 @@
+<div class="sidebar" data-color="purple" data-image="../assets/img/sidebar-1.jpg">
+    <div class="logo">
+        <a class="simple-text">
+            UET MONITOR
+        </a>
+    </div>
+    <div class="sidebar-wrapper">
+        <ul class="nav">
+
+            <!-- <li class="active" ng-click="vm.setCurView(1)">
+                <a ui-sref="live">
+                    <i class="material-icons">live_tv</i>
+                    <p>Live</p>
+                </a>
+            </li>
+            <li ng-click="vm.setCurView(2)">
+                <a ui-sref="playback">
+                    <i class="material-icons">videocam</i>
+                    <p>PlayBack</p>
+                </a>
+            </li>
+            <li ng-click="vm.setCurView(3)">
+                <a ui-sref="setting">
+                    <i class="material-icons">settings</i>
+                    <p>Setting</p>
+                </a>
+            </li> -->
+
+            <li ng-repeat="tab in vm.tabs track by $index" class="">
+                <a ui-sref="{{tab.title}}">
+                    <i class="material-icons" ng-bind="tab.icon"></i>
+                    <p ng-bind="tab.title"></p>
+                </a>
+            </li>
+
+            <li class="active-pro">
+                <a href="">
+                    <i class="material-icons">unarchive</i>
+                    <p>Góp Ý</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
