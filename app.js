@@ -24,7 +24,10 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'app_client')))
+
+//separate app_client to 2 to avoid wrong_path_bugs in angularjs
+app.use(express.static(path.join(__dirname, 'app_client', 'user')));
+app.use(express.static(path.join(__dirname, 'app_client', 'admin')));
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(session({
   secret            : process.env.SECRET || 'SOME_SECRET',
