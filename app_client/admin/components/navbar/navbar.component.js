@@ -12,7 +12,7 @@
 
 
     navbarCtrl.$inject = ['$scope']
-    function navbarCtrl() {
+    function navbarCtrl($scope) {
         var vm = this;
         preProcess();
         init();
@@ -20,24 +20,30 @@
 
 
         function preProcess() {
-
-
-            vm.curView = '';
-            var curView = location.hash.substr(3);
-            //capitalize the first charecter to match the style of view
-            if (curView) vm.curTab = curView[0].toUpperCase() + curView.substr(1);
-            vm.curView = curView;
+            
+            vm.curView = getView(location.hash);
         }
 
         function init() {
+
+            decideView()
+
+
+
 
             function decideView() {
                 $scope.$watch(function () {
                     return location.hash;
                 }, function (val) {
-                    
+                    vm.curView = getView(val);
                 })
             }
+        }
+
+        function getView(locationHash){
+            var curView = locationHash.substr(3);
+            //capitalize the first charecter to match the style of view
+            return (curView) ? curView[0].toUpperCase() + curView.substr(1) : '';
         }
     }
 })()
