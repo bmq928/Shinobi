@@ -21,6 +21,8 @@ route.get('/', (req, res, next) => {
 route.post('/login', authCtrl.login);
 
 //adminCtrl
+route.get('/allMonitor', authMid, adminCtrl.getAllMonitor);
+route.get('/allUser', authMid, adminCtrl.getAllUser);
 route.put('/allocate-monitor', authMid, adminCtrl.allocateMonitor);
 route.put('/unallocate-monitor', authMid, adminCtrl.unallocateMonitor);
 route.post('/addUser', authMid, adminCtrl.addUser);

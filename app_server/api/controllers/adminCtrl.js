@@ -168,8 +168,8 @@ module.exports.removeUserByMail = (req, res) => {
     isRoot(req, (err, rootUser) => {
         if (err) return res.status(401).json(err);
 
-        
-        let { mail } =  req.body ;
+
+        let { mail } = req.body;
         if (!mail) return res.status(400).json({ message: 'mail is required' })
 
         //check whether mail is root or not
@@ -192,7 +192,7 @@ module.exports.removeUserByMail = (req, res) => {
             .exec((err, numRemove) => {
                 console.log(numRemove)
                 if (err) return res.status(400).json(err)
-                if(!numRemove.n) return res.status(400).json({message: 'mail invalid'})
+                if (!numRemove.n) return res.status(400).json({ message: 'mail invalid' })
                 return res.status(200).json({ message: 'remove completed' })
             })
     })
@@ -235,3 +235,34 @@ module.exports.removeUserByMail = (req, res) => {
 //             })
 //     })
 // }
+
+
+//get all user
+module.exports.getAllUser = (req, res) => {
+    isRoot(req, (err, rootUser) => {
+
+        if (err) return res.status(400).json(err);
+
+        User.find({}, (err, users) => {
+            if (err) return res.status(400).json(err);
+
+            if (!users.length) return res.status(404).json({ message: 'no user founded' });
+
+            return res.status(200).json({ users });
+        })
+    })
+}
+
+module.exports.getAllMonitor = (req, res) => {
+    isRoot(req, (err, rootUser) => {
+        if (err) return res.status(400).json(err);
+
+        Monitor.find({}, (err, monitors) => {
+            if (err) return res.status(400).json(err);
+
+            if (!monitors.length) return res.status(404).json({ message: 'no monitor founded' });
+
+            return res.status(200).json({ monitors });
+        })
+    })
+}

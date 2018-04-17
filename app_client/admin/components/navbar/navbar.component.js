@@ -32,7 +32,11 @@
         function init() {
 
             function decideView() {
-                $scope.$watch()
+                $scope.$watch(function () {
+                    return location.hash;
+                }, function (val) {
+                    
+                })
             }
         }
     }
