@@ -9,45 +9,49 @@
 <!--=========== Allocate monitor by user mail ===============-->
 <div class="form-group">
     <fieldset>
-        <legend>Allocate monitor by user mail</legend>
-        <span class="text-danger"></span>
+        <legend>Allocate monitor</legend>
+        <span class="text-danger" ng-bind="vm.alMonitor.err"></span>
+        <span class="text-success" ng-bind="vm.alMonitor.resp"></span>
         <div class="col-md-12">
             <div class="form-group label-floating is-empty">
-                <label class="control-label">User Mail</label>
-                <input type="email" class="form-control" ng-model="vm.alMonitorByMail.uMail">
+                <label class="control-label">User ID</label>
+                <input type="text" class="form-control" ng-model="vm.alMonitor.uid">
                 <span class="material-input"></span>
             </div>
         </div>
         <div class="col-md-12">
             <div class="form-group label-floating is-empty">
                 <label class="control-label">Monitor Id</label>
-                <input type="text" class="form-control" ng-model="vm.alMonitorByMail.mid">
+                <input type="text" class="form-control" ng-model="vm.alMonitor.mid">
                 <span class="material-input"></span>
             </div>
         </div>
 
-        <button class="btn btn-primary pull-right" ng-click="vm.save()">Save</button>
+        <button class="btn btn-primary pull-right" ng-click="vm.alMonitor.save()">Save</button>
     </fieldset>
 </div>
 
 <!--=========== Unallocate monitor by user mail ===============-->
 <div class="form-group">
-    <legend>Unallocate monitor by user mail</legend>
-    <span class="text-danger"></span>
-    <div class="col-md-12">
-        <div class="form-group label-floating is-empty">
-            <label class="control-label">User Mail</label>
-            <input type="email" class="form-control" ng-model="vm.alMonitorByMail.uMail">
-            <span class="material-input"></span>
+    <fieldset>
+        <legend>Unallocate monitor</legend>
+        <span class="text-danger" ng-bind="vm.unalMonitor.err"></span>
+        <span class="text-success" ng-bind="vm.unalMonitor.resp"></span>
+        <div class="col-md-12">
+            <div class="form-group label-floating is-empty">
+                <label class="control-label">User ID</label>
+                <input type="text" class="form-control" ng-model="vm.unalMonitor.uid">
+                <span class="material-input"></span>
+            </div>
         </div>
-    </div>
-    <div class="col-md-12">
-        <div class="form-group label-floating is-empty">
-            <label class="control-label">Monitor Id</label>
-            <input type="text" class="form-control" ng-model="vm.alMonitorByMail.mid">
-            <span class="material-input"></span>
+        <div class="col-md-12">
+            <div class="form-group label-floating is-empty">
+                <label class="control-label">Monitor Id</label>
+                <input type="text" class="form-control" ng-model="vm.unalMonitor.mid">
+                <span class="material-input"></span>
+            </div>
         </div>
-    </div>
 
-    <button class="btn btn-primary pull-right" ng-click="vm.save()">Save</button>
+        <button class="btn btn-primary pull-right" ng-click="vm.unalMonitor.save()">Save</button>
+    </fieldset>
 </div>

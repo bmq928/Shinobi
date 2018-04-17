@@ -3,18 +3,61 @@
         .module('appAdmin')
         .controller('monitorCtrl', monitorCtrl)
 
-    function monitorCtrl() {
+    monitorCtrl.$inject = ['monitorService']
+    function monitorCtrl(monitorService) {
         var vm = this;
-        preProcess();
         init();
+    
 
 
-        function preProcess(){
-            vm.alMonitorByMail = {};
-        }
 
         function init(){
+            vm.alMonitor = {
+                err: '',
+                mid: '',
+                uir: '',
+                resp: '',
+                save: function() {
+                    var self = vm.alMonitor;
+                    var uid = self.uid;
+                    var mid = self.mid;
+                    monitorService
+                        .alMonitor(mid, uid, function(err, resp){
+                            if(err) {
+                                self.err = err;
+                                self.resp = '';
+                            }
+                            else {
+                                self.err = '';
+                                self.resp = resp;
+                            }
+                        })
+                }
+            }
 
+            vm.unalMonitor = {
+                err: '',
+                mid: '',
+                uir: '',
+                resp: '',
+                save: function() {
+                    var self = vm.unalMonitor;
+                    var uid = self.uid;
+                    var mid = self.mid;
+                    monitorService
+                        .unalMonitor(mid, uid, function(err, resp){
+                            if(err) {
+                                self.err = err;
+                                self.resp = '';
+                            }
+                            else {
+                                self.err = '';
+                                self.resp = resp;
+                            }
+                        })
+                }
+            }
+            
         }
 
 

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const uri = 'mongodb://localhost/miniappFakeShinobiUser'
+const uri = 'mongodb://localhost/shinobi'
 
 mongoose.connect(uri)
 

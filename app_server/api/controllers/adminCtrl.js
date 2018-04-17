@@ -197,21 +197,40 @@ module.exports.removeUserByMail = (req, res) => {
     })
 }
 
-//just now we show the id of the monitors
-module.exports.alMonitorsByMail = (req, res) => {
-    isRoot(req, (err, rootUser) => {
-        if(err) return res.status(401).json(err);
+// //just now we show the id of the monitors
+// module.exports.alMonitorsByMail = (req, res) => {
+//     isRoot(req, (err, rootUser) => {
+//         if(err) return res.status(401).json(err);
 
-        let mail = req.query.mail;
+//         let mail = req.query.mail;
 
-        if(!mail) return res.status(400).json({message: 'mail is required'})
+//         if(!mail) return res.status(400).json({message: 'mail is required'})
 
-        User
-            .findOne({mail}, (err, user) => {
-                if(err) return res.status(400).json(err);
-                if(!user) return res.status(400).json({message: 'mail is invalid'});
+//         User
+//             .findOne({mail}, (err, user) => {
+//                 if(err) return res.status(400).json(err);
+//                 if(!user) return res.status(400).json({message: 'mail is invalid'});
 
-                return res.status(200).json({alMonitors: user.alMonitors})
-            })
-    })
-}
+//                 return res.status(200).json({alMonitors: user.alMonitors})
+//             })
+//     })
+// }
+
+// // unalocate monitor from user by id
+// module.exports.unalMonitorsByMail = (req, res) => {
+//     isRoot(req, (err, rootUser) => {
+//         if(err) return res.status(401).json(err);
+
+//         let mail = req.query.mail;
+
+//         if(!mail) return res.status(400).json({message: 'mail is required'})
+
+//         User
+//             .findOne({mail}, (err, user) => {
+//                 if(err) return res.status(400).json(err);
+//                 if(!user) return res.status(400).json({message: 'mail is invalid'});
+
+//                 return res.status(200).json({alMonitors: user.alMonitors})
+//             })
+//     })
+// }
