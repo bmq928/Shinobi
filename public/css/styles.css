@@ -6,8 +6,15 @@ ul li {
     list-style: none;
 }
 
+/* hide some thing */
 .hide {
   display: none;
+}
+
+/* form group */
+.form-group{
+  margin-bottom: 15px;
+  display: block;
 }
 
 .media{

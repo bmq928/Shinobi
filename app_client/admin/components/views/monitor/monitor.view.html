@@ -4,4 +4,50 @@
  form-title="{{form.formTitle}}"></config-form> -->
 
 
- 
+
+
+<!--=========== Allocate monitor by user mail ===============-->
+<div class="form-group">
+    <fieldset>
+        <legend>Allocate monitor by user mail</legend>
+        <span class="text-danger"></span>
+        <div class="col-md-12">
+            <div class="form-group label-floating is-empty">
+                <label class="control-label">User Mail</label>
+                <input type="email" class="form-control" ng-model="vm.alMonitorByMail.uMail">
+                <span class="material-input"></span>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group label-floating is-empty">
+                <label class="control-label">Monitor Id</label>
+                <input type="text" class="form-control" ng-model="vm.alMonitorByMail.mid">
+                <span class="material-input"></span>
+            </div>
+        </div>
+
+        <button class="btn btn-primary pull-right" ng-click="vm.save()">Save</button>
+    </fieldset>
+</div>
+
+<!--=========== Unallocate monitor by user mail ===============-->
+<div class="form-group">
+    <legend>Unallocate monitor by user mail</legend>
+    <span class="text-danger"></span>
+    <div class="col-md-12">
+        <div class="form-group label-floating is-empty">
+            <label class="control-label">User Mail</label>
+            <input type="email" class="form-control" ng-model="vm.alMonitorByMail.uMail">
+            <span class="material-input"></span>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="form-group label-floating is-empty">
+            <label class="control-label">Monitor Id</label>
+            <input type="text" class="form-control" ng-model="vm.alMonitorByMail.mid">
+            <span class="material-input"></span>
+        </div>
+    </div>
+
+    <button class="btn btn-primary pull-right" ng-click="vm.save()">Save</button>
+</div>

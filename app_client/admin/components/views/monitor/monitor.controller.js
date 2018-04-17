@@ -10,11 +10,11 @@
 
 
         function preProcess(){
-
+            vm.alMonitorByMail = {};
         }
 
         function init(){
-            
+
         }
 
 
