@@ -1,1 +1,57 @@
-dlkfjasldflkjasldkfjljdslfjl
+<div class="form-group">
+    <fieldset>
+        <legend>Add a new User</legend>
+        <span class="text-danger" ng-bind="vm.addUser.err"></span>
+        <span class="text-success" ng-bind="vm.addUser.resp"></span>
+        <div class="col-md-12">
+            <div class="form-group label-floating is-empty">
+                <label class="control-label">Mail</label>
+                <input type="email" class="form-control" ng-model="vm.addUser.mail">
+                <span class="material-input"></span>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group label-floating is-empty">
+                <label class="control-label">Password</label>
+                <input type="password" class="form-control" ng-model="vm.addUser.password">
+                <span class="material-input"></span>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group label-floating is-empty">
+                <label class="control-label">Key Group</label>
+                <input type="text" class="form-control" ng-model="vm.addUser.ke">
+                <span class="material-input"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+
+            <div class="form-group label-floating is-empty">
+                <label class="col-md-5">Detail</label>
+                <select ng-model="vm.addUser.detail">
+                    <option value="common_user">common user</option>
+                </select>
+                <span class="material-input"></span>
+            </div>
+        </div>
+
+        <button class="btn btn-primary pull-right" ng-click="vm.addUser.save()">Save</button>
+    </fieldset>
+</div>
+
+<div class="form-group">
+    <fieldset>
+        <legend>Remove User</legend>
+        <span class="text-danger" ng-bind="vm.removeUser.err"></span>
+        <span class="text-success" ng-bind="vm.removeUser.resp"></span>
+        <div class="col-md-12">
+            <div class="form-group label-floating is-empty">
+                <label class="control-label">Mail</label>
+                <input type="email" class="form-control" ng-model="vm.removeUser.mail">
+                <span class="material-input"></span>
+            </div>
+        </div>
+
+        <button class="btn btn-primary pull-right" ng-click="vm.removeUser.save()">Save</button>
+    </fieldset>
+</div>

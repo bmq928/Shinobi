@@ -168,7 +168,8 @@ module.exports.removeUserByMail = (req, res) => {
     isRoot(req, (err, rootUser) => {
         if (err) return res.status(401).json(err);
 
-        let { mail } = req.body
+        
+        let { mail } =  req.body ;
         if (!mail) return res.status(400).json({ message: 'mail is required' })
 
         //check whether mail is root or not
