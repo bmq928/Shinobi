@@ -1,0 +1,36 @@
+<div class="modal fade" id="show-user-info-modal" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                <h3 class="modal-title">User infomation</h3>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <li class="row">
+                        <strong class="col-sm-2 col-md-2 col-lg-2">MAIL: </strong>
+                        <div class="col-sm-8 col-md-8 col-lg-8" ng-bind="vm.curUser.mail"></div>
+                    </li>
+                    <li class="row">
+                        <strong class="col-sm-2 col-md-2 col-lg-2">DETAIL: </strong>
+                        <div class="col-sm-8 col-md-8 col-lg-8" ng-bind="vm.curUser.detail"></div>
+                    </li>
+                    <li class="row">
+                        <strong class="col-sm-2 col-md-2 col-lg-2" title="allowed monitor">MONITOR: </strong>
+                        <div class="col-sm-8 col-md-8 col-lg-8">
+                            <ul>
+                               <li ng-repeat="m in vm.curUser.alMonitors" ng-bind="m">
+                               </li>  
+                            </ul>
+                        </div>
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.endShowInfo()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
