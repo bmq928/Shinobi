@@ -1,34 +1,44 @@
-(function(){
+(function () {
     angular
         .module('appAdmin')
         .component('configForm', {
             templateUrl: '../admin/components/configForm/configForm.template.html',
             bindings: {
                 handleSubmit: '&',
-                options: '@'
+                options: '@',
+                formTitle: '@'
             },
             controller: configFormCtrl,
             controllerAs: 'vm'
         })
 
-    function configFormCtrl(){
+    function configFormCtrl() {
         var vm = this;
         var formType = {
             text: 'text',
-            selection: 'selection'
+            password: 'password',
+            email: 'email',
+            selection: 'select'
         }
 
-        vm.$onInit = function(){
+        vm.$onInit = function () {
             preProcess();
             init();
+
+            console.log(vm.options);
+            console.log(vm.formTitle)
         }
 
-        function init(){
-
+        vm.isTextInput = function (input) {
+            return input.type === formType.text || input.type === formType.password;
         }
 
-        function preProcess(){
+        function init() {
+            if (vm.options) vm.inputs = JSON.parse(vm.options);
+        }
 
+        function preProcess() {
+            vm.inputs = [];
         }
 
     }

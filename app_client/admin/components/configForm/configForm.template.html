@@ -1,1 +1,121 @@
-<h1>config form</h1>
+
+<fieldset class="form-group">
+    <!-- <h2 style="text-align: center;" ng-bind="vm.formTitle"></h2> -->
+    <legend ng-bind="vm.formTitle"></legend>
+    <div 
+        ng-repeat="input in vm.inputs track by $index"
+        ng-class=" {{vm.isTextInput(input)}} ? 'col-md-12' : 'col-md-6' ">
+        <div ng-class="{{!input.show}} ? 'hide' : '' ">
+            <div ng-if="vm.isTextInput(input)">
+                <div class="form-group label-floating is-empty">
+                    <label class="control-label" ng-bind="input.title"></label>
+                    <input type="{{input.type}}" class="form-control">
+                    <span class="material-input"></span>
+                </div>
+            </div>
+            <div ng-if="!vm.isTextInput(input)">
+                <div class="form-group label-floating is-empty">
+                    <label class="col-md-5" ng-bind="input.title"></label>
+                    <select>
+                        <option
+                        ng-repeat="option in input.options"
+                        value="{{option.value}}"
+                        ng-bind="option.value"></option>
+                        <!-- <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="6">6</option> -->
+                    </select>
+                    <span class="material-input"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-primary pull-right" ng-click="vm.handleSubmit()">Save</button>
+</fieldset>
+<!-- <div class="col-md-12">
+    <div class="form-group label-floating is-empty">
+        <label class="control-label">Change Password</label>
+        <input type="text" class="form-control" ng-model="vm.changePassword">
+        <span class="material-input"></span>
+    </div>
+</div>
+
+<div class="col-md-12">
+    <div class="form-group label-floating is-empty">
+        <label class="control-label">Number videos per page</label>
+        <input type="number" class="form-control" ng-model="vm.videoPerPage">
+        <span class="material-input"></span>
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="form-group label-floating is-empty">
+        <label class="control-label">Number monitors per page</label>
+        <input type="number" class="form-control" ng-model="vm.monitorPerPage">
+        <span class="material-input"></span>
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="form-group label-floating is-empty">
+    <label class="col-md-5">Video Per Row :</label>
+        <select ng-model="vm.videoPerRow" >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="6">6</option>
+        </select>
+        <span class="material-input"></span>
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="form-group label-floating is-empty">
+        <label class="col-md-5">Monitors Per Row :</label>
+        <select ng-model="vm.monitorPerRow">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="6">6</option>
+        </select>
+        <span class="material-input"></span>
+    </div>
+</div> -->
+<!-- <div class="col-md-12">
+        <div class="form-group label-floating is-empty">
+            <label class="control-label">Number video per row</label>
+            <input type="text" class="form-control">
+            <span class="material-input"></span>
+        </div>
+    </div>
+<div class="col-md-12">
+        <div class="form-group label-floating is-empty">
+            <label class="control-label">Number videos per page</label>
+            <input type="text" class="form-control">
+            <span class="material-input"></span>
+        </div>
+    </div> -->
+
+<!-- <div class="col-md-6">
+    <div class="form-group label-floating is-empty">
+        <label class="col-md-5">Filter Monitors By :</label>
+        <select ng-model="vm.monitorFilter">
+            <option value="name">Name</option>
+            <option value="_id">ID</option>
+        </select>
+        <span class="material-input"></span>
+    </div>
+</div>
+
+<div class="col-md-6">
+    <div class="form-group label-floating is-empty">
+        <label class="col-md-5">Filter Videos By :</label>
+        <select ng-model="vm.videoFilter">
+            <option value="name">Name</option>
+            <option value="_id">ID</option>
+        </select>
+        <span class="material-input"></span>
+    </div>
+</div> -->
+
