@@ -27,6 +27,7 @@ route.put('/allocate-monitor', authMid, adminCtrl.allocateMonitor);
 route.put('/unallocate-monitor', authMid, adminCtrl.unallocateMonitor);
 route.post('/addUser', authMid, adminCtrl.addUser);
 route.post('/removeUserByMail', authMid, adminCtrl.removeUserByMail);
+route.post('/removeGroupUser', authMid, adminCtrl.removeGroupUser);
 // route.get('/alMonitorsByMail', authMid, adminCtrl.alMonitorsByMail);
 
 //normalUserCtrl

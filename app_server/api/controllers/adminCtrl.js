@@ -165,6 +165,41 @@ module.exports.addUser = (req, res) => {
     })
 }
 
+module.exports.removeGroupUser = (req, res) => {
+
+    isRoot(req, (err, rootUser) => {
+        if (err) return res.status(400).json(err);
+
+        
+        const listUser = JSON.parse(req.body.listUser);
+        
+        // console.log('done parse');
+        // console.log(listUser.length);
+
+        if(!listUser || !listUser.length) return res.status(400).json({message: 'no user selected'});
+
+        //check whether root-user in this
+
+        for (let i = 0; i < listUser.length; ++i) {
+            console.log(listUser[i]);
+            console.log(rootUser);
+            if (listUser[i] === rootUser._id) return res.status(400).json({ message: 'cannot delete root user' });
+                
+        }
+
+        // console.log('donet for');
+
+        // delete
+        User.deleteMany({ _id: { $in: listUser } }, (err) => {
+            if(err) return res.status(400).json(err);
+
+            return res.status(200).json({message: 'delete completed'});
+        });
+
+    });
+
+}
+
 //remove user
 module.exports.removeUserByMail = (req, res) => {
     isRoot(req, (err, rootUser) => {

@@ -1,6 +1,9 @@
+<div class="text-danger" ng-bind="vm.err"></div>
+<div class="text-success" ng-bind="vm.resp"></div>
 <table class="table table-hover">
     <thead>
         <tr>
+            <th></th>
             <th>ID</th>
             <th>Mail</th>
             <th>Detail</th>
@@ -12,6 +15,9 @@
     <tbody>
 
         <tr ng-repeat="user in vm.users track by user._id">
+            <td>
+                <input type="checkbox" ng-model="vm.deleteUsers[user._id]">
+            </td>
             <td ng-bind="user._id"></td>
             <td ng-bind="user.mail"></td>
             <td ng-bind="user.detail"></td>
@@ -49,7 +55,7 @@
     data-target="#add-user-modal">Add User</button>
 
 
-    <button class="btn btn-danger">Remove User</button>
+    <button class="btn btn-danger" ng-click="vm.deleteOnSubmit()">Remove User</button>
 </div>
 
 <div>

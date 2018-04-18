@@ -9,7 +9,43 @@
         preProcess();
         init();
 
+        // vm.chooseDeleteUser = function (id) {
+        //     vm.deleteUsers.push(id);
+        // }
 
+        // vm.unChooseDeleteUser = function (id) {
+        //     vm.deleteUsers = vm.deleteUsers.filter(function (e) {
+        //         return e !== id;
+        //     })
+        // }
+
+        vm.deleteOnSubmit = function () {
+
+            refreshMessage();
+
+            var listUser = [];
+
+            for (var key in vm.deleteUsers) {
+                if (vm.deleteUsers[key]) listUser.push(key);
+            }
+
+            console.log(listUser);
+
+            if (confirm('are you sure to remove all that users ?')) {
+                userService.removeGroupUser(listUser, function (err, resp) {
+                    if (err) {
+                        vm.err = err;
+                        vm.resp = '';
+                    }
+                    else {
+                        vm.err = '';
+                        vm.resp = resp;
+
+                        initUser();
+                    }
+                })
+            }
+        }
 
 
 
@@ -18,6 +54,7 @@
             vm.err = '';
             vm.resp = '';
             vm.monitors = [];
+            vm.deleteUsers = {};
 
             preProcessModal();
         }
@@ -63,8 +100,8 @@
         function init() {
             initUser();
             initMonitor();
-
         }
+
 
         function initUser() {
             userService.getAll(function (err, users) {
@@ -72,6 +109,12 @@
                 else {
                     vm.err = '';
                     vm.users = users;
+
+                    // //init the vm.deleteUser
+
+                    // users.forEach(function(u) {
+
+                    // })
                 }
             })
         }
@@ -140,7 +183,7 @@
             userService
                 .addUser(self.mail, self.ke, self.password, self.detail,
                     function (err, resp) {
-                        if(err) {
+                        if (err) {
                             self.err = err;
                             self.resp = '';
                         } else {

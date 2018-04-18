@@ -48,7 +48,7 @@
                         console.log(resp);
                     })
             },
-            removeUser: function (mail, callback) {
+            removeUserByMail: function (mail, callback) {
                 var url = '/api/removeUserByMail';
                 console.log(mail);
 
@@ -67,6 +67,26 @@
                     .catch(function (resp) {
                         callback(resp.data.message);
                         console.log(resp);
+                    })
+            },
+            removeGroupUser: function(listUser, callback){
+                var url = '/api/removeGroupUser';
+
+                console.log(url);
+
+                return $http({
+                    url: url,
+                    headers: { 'Authorization': 'Bearer ' + token },
+                    method: 'POST',
+                    data: {
+                        listUser: JSON.stringify(listUser)
+                    }
+                })
+                    .then(function (resp) {
+                        callback(null, resp.data.message);
+                    })
+                    .catch(function (resp) {
+                        callback(resp.data.message);
                     })
             }
         }
