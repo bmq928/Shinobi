@@ -9,17 +9,42 @@
              data-dismiss="modal"
              style="color:black;">&times;</button>
             <h1>User Infomation</h1>
+            <div class="text-success" ng-bind="vm.addUserModal.resp"></div>
+            <div class="text-danger" ng-bind="vm.addUserModal.err"></div>
             <br>
             <span ng-bind="vm.navErr" class="text-danger"></span>
             <form>
-                <input type="text" name="mail" placeholder="mail">
-                <input type="password" name="password" placeholder="Password">
+                <input 
+                type="text" 
+                name="mail" 
+                placeholder="mail" 
+                ng-model="vm.addUserModal.mail">
+
+                <input 
+                type="password" 
+                name="password" 
+                placeholder="Password" 
+                ng-model="vm.addUserModal.password">
+
+
+                <input
+                 type="text" 
+                 name="text" 
+                 placeholder="keyGroup" 
+                 ng-model="vm.addUserModal.ke">
+
+                <label>Detail : </label>
+                <select ng-model="vm.addUserModal.detail">
+                    <option value="root_user">root_user</option>
+                    <option value="common_user">common_user</option>
+                </select>
+                
                 <input
                  type="submit"
                  name="login"
                  class="login loginmodal-submit"
                  value="Login"
-                 ng-click="vm.login()">
+                 ng-click="vm.addUserModal.onSubmit()">
             </form>
 
             <!-- <div class="login-help">

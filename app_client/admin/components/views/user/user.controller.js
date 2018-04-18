@@ -47,6 +47,17 @@
                 err: '',
                 resp: ''
             }
+
+            vm.addUserModal = {
+                mail: '',
+                password: '',
+                ke: '',
+                detail: '',
+                err: '',
+                resp: '',
+                onClick: addUserOnclick,
+                onSubmit: addUserOnSubmit
+            }
         }
 
         function init() {
@@ -118,6 +129,29 @@
             }).alMonitors;
         }
 
+        function addUserOnclick() {
+            refreshMessage();
+            refreshModalChoosing();
+        }
+
+        function addUserOnSubmit() {
+            var self = vm.addUserModal;
+
+            userService
+                .addUser(self.mail, self.ke, self.password, self.detail,
+                    function (err, resp) {
+                        if(err) {
+                            self.err = err;
+                            self.resp = '';
+                        } else {
+                            self.err = '';
+                            self.resp = resp;
+
+                            initUser();
+                        }
+                    })
+        }
+
         function almonitorOnSubmit() {
             var self = vm.alMonitorModal;
 
@@ -163,14 +197,22 @@
 
             vm.err = '';
             vm.resp = '';
+
+            vm.addUserModal.err = '';
+            vm.addUserModal.resp = '';
         }
 
-        function refreshModalChoosing(){
+        function refreshModalChoosing() {
             vm.alMonitorModal.targetMonitor = '';
             vm.alMonitorModal.targetUser = '';
 
             vm.unalMonitorModal.targetMonitor = '';
             vm.unalMonitorModal.targetUser = '';
+
+            vm.addUserModal.mail = '';
+            vm.addUserModal.password = '';
+            vm.addUserModal.ke = '';
+            vm.addUserModal.detail = '';
         }
     }
 
