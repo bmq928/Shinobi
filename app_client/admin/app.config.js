@@ -9,13 +9,13 @@
         var views = window.constants.VIEWS;
 
         $stateProvider
-            .state(views.monitor, {
+            .state(views.monitor.title, {
                 url: '/monitor',
                 templateUrl: '../admin/components/views/monitor/monitor.view.html',
                 controller: 'monitorCtrl',
                 controllerAs: 'vm'
             })
-            .state(views.user, {
+            .state(views.user.title, {
                 url: '/user',
                 templateUrl: '../admin/components/views/user/user.view.html',
                 controller: 'userCtrl',

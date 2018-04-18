@@ -23,9 +23,11 @@
 
         function init() {
             var views = window.constants.VIEWS;
-            for (key in views) vm.options.push({
-                title: views[key]
-            });
+            // for (key in views) vm.options.push({
+            //     title: views[key]
+            // });
+
+            for (key in views) vm.options.push(views[key]);
         }
 
     }
