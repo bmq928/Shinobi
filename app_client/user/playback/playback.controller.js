@@ -53,13 +53,18 @@
         function init() {
             //init
             video.getAllByMid('p404', function (videos) {
+                initSetting();
+
+
                 console.log(videos);
                 vm.videos = videos;
-                vm.numPage = vm.videos.length / window.constants.VIDEO_PER_PAGE + 1;
+                // vm.numPage = vm.videos.length / window.constants.VIDEO_PER_PAGE + 1;
+                if (vm.setting.videoPerPage) vm.numPage = vm.videos.length / vm.setting.videoPerPage + 1;
+                else vm.numPage = vm.videos.length / window.constants.VIDEO_PER_PAGE + 1;
                 vm.curPage = 1;
             })
 
-            initSetting();
+
 
             function initSetting() {
                 settingService.getSetting(function (err, initialSetting) {

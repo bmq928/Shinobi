@@ -14,7 +14,7 @@
     </thead>
     <tbody>
 
-        <tr ng-repeat="user in vm.users track by user._id">
+        <tr ng-repeat="user in vm.users | pagination: vm.curPage: vm.videoPerPage">
             <td>
                 <input type="checkbox" ng-model="vm.deleteUsers[user._id]">
             </td>
@@ -22,7 +22,7 @@
             <td ng-bind="user.mail"></td>
             <td ng-bind="user.detail"></td>
             <td>
-                <div ng-repeat="m in user.alMonitors track by $index" ng-bind="m"></div>
+                <div ng-repeat="m in user.alMonitors track by $index " ng-bind="m"></div>
             </td>
             <td>
                 <button 
@@ -57,6 +57,13 @@
 
     <button class="btn btn-danger" ng-click="vm.deleteOnSubmit()">Remove User</button>
 </div>
+
+<!--===================== pagination =========================-->
+<ul class="pagination pagination-sm">
+    <li ng-repeat="page in [] | range: vm.numPage" ng-class="{'active' : page === vm.curPage}">
+        <a ng-bind="page" ng-click="vm.changePage(page)"></a>
+    </li>
+</ul>
 
 <div>
     <div ng-include="'../admin/components/views/user/modals/alMonitorModal.template.html'"></div>

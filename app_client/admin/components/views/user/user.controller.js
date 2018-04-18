@@ -9,6 +9,10 @@
         preProcess();
         init();
 
+        vm.changePage = function (page) {
+            vm.curPage = page;
+        }
+
         // vm.chooseDeleteUser = function (id) {
         //     vm.deleteUsers.push(id);
         // }
@@ -50,11 +54,18 @@
 
 
         function preProcess() {
+
+            //main
             vm.users = [];
             vm.err = '';
             vm.resp = '';
             vm.monitors = [];
             vm.deleteUsers = {};
+
+            //pagination
+            vm.numPage = 0;
+            vm.curPage = 0;
+            vm.videoPerPage = window.constants.ELEMENT_PER_PAGE;
 
             preProcessModal();
         }
@@ -110,11 +121,9 @@
                     vm.err = '';
                     vm.users = users;
 
-                    // //init the vm.deleteUser
-
-                    // users.forEach(function(u) {
-
-                    // })
+                    //for pagination
+                    vm.numPage = users.length / window.constants.ELEMENT_PER_PAGE + 1;
+                    vm.curPage = 1;
                 }
             })
         }
