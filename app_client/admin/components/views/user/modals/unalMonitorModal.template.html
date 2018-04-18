@@ -11,9 +11,12 @@
             style="color:black;">&times;</button>
 
            <h1>Choose Monitor</h1>
-           <span class="text-danger"></span>
+           <div class="text-success" ng-bind="vm.unalMonitorModal.resp"></div>
+           <div class="text-danger" ng-bind="vm.unalMonitorModal.err"></div>
            <label>Available Monitor : </label>
-           <select style="margin:15px; ">
+           <select 
+           style="margin:15px; "
+           ng-model="vm.unalMonitorModal.targetMonitor">
                 <option
                  ng-repeat="m in vm.unalMonitorModal.monitorOption track by $index"
                  value="{{m}}"
@@ -24,7 +27,7 @@
                  name="login"
                  class="login loginmodal-submit"
                  value="Submit"
-                 ng-click="vm.login()">
+                 ng-click="vm.unalMonitorModal.onSubmit()">
             <!-- <div class="login-help">
                 <a href="#">Forgot Password</a>
             </div> -->

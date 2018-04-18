@@ -19,6 +19,11 @@
             vm.resp = '';
             vm.monitors = [];
 
+            preProcessModal();
+        }
+
+        //init every thing for modal
+        function preProcessModal() {
             //init almonitor modal
             //for control modal 
             vm.alMonitorModal = {
@@ -47,10 +52,10 @@
         function init() {
             initUser();
             initMonitor();
-            
+
         }
 
-        function initUser (){
+        function initUser() {
             userService.getAll(function (err, users) {
                 if (err) vm.err = err;
                 else {
@@ -60,7 +65,7 @@
             })
         }
 
-        function initMonitor(){
+        function initMonitor() {
             monitorService.getAll(function (err, monitors) {
                 if (err) vm.err = err;
                 else {
@@ -75,10 +80,12 @@
             var self = vm.alMonitorModal;
 
             refreshMessage();
+            refreshModalChoosing();
+            // preProcessModal();
 
             self.targetUser = uid;
-            console.log(uid);
             console.log(self.monitorOption);
+            console.log(self);
 
             //find monitor already allocate for the user
             var alreadyMonitors = vm.users.find(function (u) {
@@ -100,6 +107,8 @@
             var self = vm.unalMonitorModal;
 
             refreshMessage();
+            refreshModalChoosing();
+            // preProcessModal();
 
             self.targetUser = uid;
 
@@ -113,25 +122,39 @@
             var self = vm.alMonitorModal;
 
             monitorService
-                .alMonitor(self.targetMonitor, self.targetUser, function(err, message){
-                    if(err) {
+                .alMonitor(self.targetMonitor, self.targetUser, function (err, resp) {
+                    if (err) {
                         self.err = err;
                         self.resp = '';
                     } else {
                         self.err = '';
-                        self.resp = message;
+                        self.resp = resp;
 
                         //refresh user info
                         initUser();
                     }
                 })
-        }   
+        }
 
         function unalmonitorOnSubmit() {
-            
+            var self = vm.unalMonitorModal;
+
+            monitorService
+                .unalMonitor(self.targetMonitor, self.targetUser, function (err, resp) {
+                    if (err) {
+                        self.err = err;
+                        self.resp = '';
+                    } else {
+                        self.err = '';
+                        self.resp = resp;
+
+                        //refresh user info
+                        initUser();
+                    }
+                })
         }
-        
-        function refreshMessage(){
+
+        function refreshMessage() {
             vm.alMonitorModal.err = '';
             vm.alMonitorModal.resp = '';
 
@@ -140,6 +163,14 @@
 
             vm.err = '';
             vm.resp = '';
+        }
+
+        function refreshModalChoosing(){
+            vm.alMonitorModal.targetMonitor = '';
+            vm.alMonitorModal.targetUser = '';
+
+            vm.unalMonitorModal.targetMonitor = '';
+            vm.unalMonitorModal.targetUser = '';
         }
     }
 
