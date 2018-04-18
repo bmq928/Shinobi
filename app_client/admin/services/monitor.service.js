@@ -9,6 +9,23 @@
         var token = localStorage.getItem('jwt-token');
 
         return {
+            getAll: function(callback){
+                var url = '/api/getAllMonitors';
+
+                $http({
+                    url: url,
+                    headers: { 'Authorization': 'Bearer ' + token },
+                    method: 'GET'
+                })
+                    .then(function (resp) {
+                        console.log(resp);  
+                        callback(null, resp.data.alMonitors);
+                    })
+                    .catch(function (resp) {
+                        console.log(resp);
+                        callback(resp.data.message);
+                    })
+            },
             alMonitor: function (mid, uid, callback) {
 
                 var url = '/api/allocate-monitor';

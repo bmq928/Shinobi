@@ -20,14 +20,13 @@
 
 
         function preProcess() {
-            
+
             vm.curView = getView(location.hash);
         }
 
         function init() {
 
             decideView()
-
 
 
 
@@ -40,7 +39,7 @@
             }
         }
 
-        function getView(locationHash){
+        function getView(locationHash) {
             var curView = locationHash.substr(3);
             //capitalize the first charecter to match the style of view
             return (curView) ? curView[0].toUpperCase() + curView.substr(1) : '';

@@ -1,0 +1,36 @@
+<div class="modal fade" id="al-monitor-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    
+    <div class="modal-dialog" style="z-index:1042;">
+        <div class="loginmodal-container">
+            <!-- this btn is just for click in directiv -->
+            <button 
+            type="button"
+            class="close"
+            id="al-monitor-modal-close" 
+            data-dismiss="modal"
+            style="color:black;">&times;</button>
+
+           <h1>Choose Monitor</h1>
+           <div class="text-success" ng-bind="vm.alMonitorModal.resp"></div>
+           <div class="text-danger" ng-bind="vm.alMonitorModal.err"></div>
+           <label>Available Monitor : </label>
+           <select 
+           style="margin:15px; " 
+           ng-model="vm.alMonitorModal.targetMonitor">
+                <option
+                 ng-repeat="m in vm.alMonitorModal.monitorOption track by $index"
+                 value="{{m}}"
+                 ng-bind="m"></option>
+           </select>
+           <input
+            type="submit"
+            name="login"
+            class="login loginmodal-submit"
+            value="Submit"
+            ng-click="vm.alMonitorModal.onSubmit()">
+            <!-- <div class="login-help">
+                <a href="#">Forgot Password</a>
+            </div> -->
+        </div>
+    </div>
+</div>

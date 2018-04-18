@@ -2,6 +2,10 @@ a{
   cursor: pointer;
 }
 
+input[type="submit"]{
+  background: #9c27b0;
+}
+
 ul li {
     list-style: none;
 }

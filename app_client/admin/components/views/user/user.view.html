@@ -1,57 +1,52 @@
-<div class="form-group">
-    <fieldset>
-        <legend>Add a new User</legend>
-        <span class="text-danger" ng-bind="vm.addUser.err"></span>
-        <span class="text-success" ng-bind="vm.addUser.resp"></span>
-        <div class="col-md-12">
-            <div class="form-group label-floating is-empty">
-                <label class="control-label">Mail</label>
-                <input type="email" class="form-control" ng-model="vm.addUser.mail">
-                <span class="material-input"></span>
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="form-group label-floating is-empty">
-                <label class="control-label">Password</label>
-                <input type="password" class="form-control" ng-model="vm.addUser.password">
-                <span class="material-input"></span>
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="form-group label-floating is-empty">
-                <label class="control-label">Key Group</label>
-                <input type="text" class="form-control" ng-model="vm.addUser.ke">
-                <span class="material-input"></span>
-            </div>
-        </div>
-        <div class="col-md-6">
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Mail</th>
+            <th>Detail</th>
+            <th>Alowed Monitor</th>
+            <th>Add Monitor</th>
+            <th>Remove</th>
+        </tr>
+    </thead>
+    <tbody>
 
-            <div class="form-group label-floating is-empty">
-                <label class="col-md-5">Detail</label>
-                <select ng-model="vm.addUser.detail">
-                    <option value="common_user">common user</option>
-                </select>
-                <span class="material-input"></span>
-            </div>
-        </div>
-
-        <button class="btn btn-primary pull-right" ng-click="vm.addUser.save()">Save</button>
-    </fieldset>
+        <tr ng-repeat="user in vm.users track by user._id">
+            <td ng-bind="user._id"></td>
+            <td ng-bind="user.mail"></td>
+            <td ng-bind="user.detail"></td>
+            <td>
+                <div ng-repeat="m in user.alMonitors track by $index" ng-bind="m"></div>
+            </td>
+            <td>
+                <button 
+                title="allocate monitor to this user" 
+                class="btn btn-xs btn-success"
+                data-toggle="modal"
+                data-target="#al-monitor-modal"
+                ng-click="vm.alMonitorModal.onClick(user._id)">
+                    <i class="material-icons">add</i>
+                </button>
+            </td>
+            <td>
+                <button
+                 title="unallocate monitor to this user"
+                 class="btn btn-xs btn-danger"
+                 data-toggle="modal"
+                 data-target="#unal-monitor-modal"
+                 ng-click="vm.unalMonitorModal.onClick(user._id)">
+                    <i class="material-icons">clear</i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="">
+    <button class="btn btn-success">Add User</button>
+    <button class="btn btn-danger">Remove User</button>
 </div>
 
-<div class="form-group">
-    <fieldset>
-        <legend>Remove User</legend>
-        <span class="text-danger" ng-bind="vm.removeUser.err"></span>
-        <span class="text-success" ng-bind="vm.removeUser.resp"></span>
-        <div class="col-md-12">
-            <div class="form-group label-floating is-empty">
-                <label class="control-label">Mail</label>
-                <input type="email" class="form-control" ng-model="vm.removeUser.mail">
-                <span class="material-input"></span>
-            </div>
-        </div>
-
-        <button class="btn btn-primary pull-right" ng-click="vm.removeUser.save()">Save</button>
-    </fieldset>
+<div>
+    <div ng-include="'../admin/components/views/user/modals/alMonitorModal.template.html'"></div>
+    <div ng-include="'../admin/components/views/user/modals/unalMonitorModal.template.html'"></div>
 </div>

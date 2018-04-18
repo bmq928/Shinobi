@@ -9,6 +9,22 @@
         var token = localStorage.getItem('jwt-token');
 
         return {
+            getAll: function (callback) {
+                var url = '/api/allUser';
+
+
+                $http({
+                    url: url,
+                    headers: { 'Authorization': 'Bearer ' + token },
+                    method: 'GET'
+                })
+                    .then(function (resp) {
+                        callback(null, resp.data.users);
+                    })
+                    .catch(function (resp) {
+                        callback(resp.data.message);
+                    })
+            },
             addUser: function (mail, ke, password, detail, callback) {
                 var url = '/api/addUser';
 
