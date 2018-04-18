@@ -42,11 +42,18 @@
     </tbody>
 </table>
 <div class="">
-    <button class="btn btn-success">Add User</button>
+    <button 
+    class="btn btn-success"
+    title="add a user"
+    data-toggle="modal"
+    data-target="#add-user-modal">Add User</button>
+
+
     <button class="btn btn-danger">Remove User</button>
 </div>
 
 <div>
     <div ng-include="'../admin/components/views/user/modals/alMonitorModal.template.html'"></div>
     <div ng-include="'../admin/components/views/user/modals/unalMonitorModal.template.html'"></div>
+    <div ng-include="'../admin/components/views/user/modals/addUserModal.template.html'"></div>
 </div>

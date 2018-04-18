@@ -109,7 +109,7 @@ UserSchema.pre('save', function (next) {
 //     return bcrypt.hashSync(password, bcrypt.genSaltSync(Math.random()))
 // }
 
-UserSchema.methods.changePassword = function(password){
+UserSchema.methods.changePassword = function (password) {
     this.password = password;
     this._hashAlready = false;
 }
@@ -132,12 +132,14 @@ UserSchema.methods.addMonitor = function (mid) {
 }
 UserSchema.methods.generateJWT = function () {
     const numDayExprire = 7;
-    const { mail, isRoot, ke, detail, alMonitors } = this;
+
+    console.log(this);
+    const { mail, isRoot, ke, detail, alMonitors, id } = this;
     let exp = new Date();
-    exp = exp.setDate(exp.getDate() + 7)
+    exp = exp.setDate(exp.getDate() + 7);
 
     return jwt.sign({
-        mail, isRoot, ke, detail, alMonitors, exp
+        _id : id, mail, isRoot, ke, detail, alMonitors, exp
     }, process.env.JWT_SECRET)
 }
 

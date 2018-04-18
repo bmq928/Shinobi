@@ -93,7 +93,9 @@ module.exports.unallocateMonitor = (req, res) => {
         if (err) return res.status(401).json(err);
         if (!uid) return res.status(400).json({ message: 'user id is required' });
         if (!mid) return res.status(400).json({ message: 'monitor id is required' });
-        // if (uid === rootUser._id) return res.status(400).json({ message: 'cannot unallocate from root-user' });
+
+        console.log(rootUser);
+        if (uid === rootUser._id) return res.status(400).json({ message: 'cannot unallocate from root-user' });
 
         User.findById(uid, (err, user) => {
             console.log(err)
