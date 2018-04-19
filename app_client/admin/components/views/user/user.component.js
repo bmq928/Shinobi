@@ -1,7 +1,15 @@
 (function () {
+    // angular
+    //     .module('appAdmin')
+    //     .controller('userCtrl', userCtrl)
+
     angular
         .module('appAdmin')
-        .controller('userCtrl', userCtrl)
+        .component('userView', {
+            templateUrl: '../admin/components/views/user/user.template.html',
+            controller: userCtrl,
+            controllerAs: 'vm'
+        })
 
     userCtrl.$inject = ['userService', 'monitorService']
     function userCtrl(userService, monitorService) {

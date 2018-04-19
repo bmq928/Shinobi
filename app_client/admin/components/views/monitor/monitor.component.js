@@ -1,7 +1,15 @@
 (function () {
+    // angular
+    //     .module('appAdmin')
+    //     .controller('monitorCtrl', monitorCtrl)
+
     angular
         .module('appAdmin')
-        .controller('monitorCtrl', monitorCtrl)
+        .component('monitorView', {
+            templateUrl: '../admin/components/views/monitor/monitor.template.html',
+            controller: monitorCtrl,
+            controllerAs: 'vm'
+        })
 
     monitorCtrl.$inject = ['monitorService']
     function monitorCtrl(monitorService) {
