@@ -46,6 +46,10 @@
                         vm.resp = resp;
 
                         initUser();
+
+                        //reinit the delelete list
+                        //for the future action
+                        vm.deleteUsers = {};
                     }
                 })
             }
