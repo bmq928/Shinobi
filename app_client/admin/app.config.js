@@ -23,10 +23,10 @@
         //     })
 
         $stateProvider
-            .state(views.monitor.title, {
-                url: '/monitor',
-                template: '<monitor-view>< /monitor-view>'
-            })
+            // .state(views.monitor.title, {
+            //     url: '/monitor',
+            //     template: '<monitor-view>< /monitor-view>'
+            // })
             .state(views.user.title, {
                 url: '/user',
                 template : '<user-view></user-view>'
