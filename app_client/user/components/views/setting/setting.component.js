@@ -1,7 +1,18 @@
 (function () {
+    // angular
+    //     .module('app')
+    //     .controller('settingCtrl', settingCtrl)
+
     angular
-        .module('app')
-        .controller('settingCtrl', settingCtrl)
+    .module('app')
+    .component('settingView', {
+        templateUrl: './user/components/views/setting/setting.template.html',
+        bindings: {
+
+        },
+        controller: settingCtrl,
+        controllerAs: 'vm'
+    })
 
     settingCtrl.$inject = ['setting', 'authentication']
     function settingCtrl(setting, authentication) {

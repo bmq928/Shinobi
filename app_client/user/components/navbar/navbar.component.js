@@ -1,7 +1,14 @@
 (function () {
     angular
         .module('app')
-        .controller('navbarCtrl', navbarCtrl)
+        .component('navbar', {
+            templateUrl: './user/components/navbar/navbar.template.html',
+            bindings: {
+
+            },
+            controller: navbarCtrl,
+            controllerAs: 'vm'
+        })
 
     navbarCtrl.$inject = ['viewManage', 'authentication']
     function navbarCtrl(viewManage, authentication) {
@@ -14,6 +21,15 @@
         vm.curUser = null;
         console.log(vm.curView);
 
+        vm.$onInit = function () {
+
+            //init ui
+            authentication
+                .onLoginSuccess(function () {
+                    $('#login-modal-close').click();
+                })
+        }
+
         //update view on title
         viewManage.shouldChangeView(function (view) {
             vm.curView = view;
@@ -22,6 +38,9 @@
         vm.prepareLogin = function () {
             vm.navErr = ''
         }
+
+
+
 
         vm.login = function () {
             authentication
@@ -47,15 +66,11 @@
             vm.curUser = data;
         }
 
-        vm.search = function(){
-            
+        vm.search = function () {
+
         }
-        //tool for each view
 
 
-        // $timeout(function(){
-        //     viewManage.setCurView(2);
-        //     console.log(vm.curView)
-        // }, 1000)
+
     }
 })()

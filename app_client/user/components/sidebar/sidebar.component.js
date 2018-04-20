@@ -1,20 +1,22 @@
 (function () {
     angular
-        .module('app')
-        .directive('sidebar', sidebar)
+    .module('app')
+    .component('sidebar', {
+        templateUrl: './user/components/sidebar/sidebar.template.html',
+        bindings: {
 
-    sidebar.$inject = ['viewManage']
-    function sidebar(viewManage) {
-        return {
-            restrict: 'E',
-            templateUrl: 'user/common/directives/sidebar/sidebar.template.html',
-            controller: 'sidebarCtrl as vm',
-            link: function (scope, el, attr) {
+        },
+        controller: sidebarCtrl,
+        controllerAs: 'vm'
+    })
 
-                //decide what is chosen for the first time
-                //first remove all selection
-                //choose only one that is current view
-                var $li = $('ul.nav > li');
+    sidebarCtrl.$inject = ['viewManage']
+    function sidebarCtrl(viewManage) {
+        var vm = this;
+
+        //init ui
+        vm.$onInit = function() {
+            var $li = $('ul.nav > li');
                 var curView = viewManage.getCurView();
                 console.log(curView);
 
@@ -38,8 +40,8 @@
                     $li.removeClass('active');
                     $this.addClass('active');
                 })
-
-            }
         }
+
+        vm.setCurView = viewManage.setCurView;
     }
 })()

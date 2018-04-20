@@ -13,21 +13,15 @@
         $stateProvider
             .state(views.live, {
                 url: '/live',
-                templateUrl: './user/live/live.view.html',
-                controller: 'liveCtrl',
-                controllerAs: 'vm'
+                template: '<live-view></live-view>'
             })
             .state(views.playback, {
                 url: '/playback',
-                templateUrl: './user/playback/playback.view.html',
-                controller: 'playbackCtrl',
-                controllerAs: 'vm'
+                template: '<playback-view></playback-view>'
             })
             .state(views.setting, {
                 url: '/setting',
-                templateUrl: './user/setting/setting.view.html',
-                controller: 'settingCtrl',
-                controllerAs: 'vm'
+                template: '<setting-view></setting-view>'
             })
 
         $urlRouterProvider.otherwise('/live');

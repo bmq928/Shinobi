@@ -11,11 +11,19 @@
             controllerAs: 'vm'
         })
 
-    userCtrl.$inject = ['userService', 'monitorService']
-    function userCtrl(userService, monitorService) {
+    userCtrl.$inject = ['userService', 'monitorService', 'authentication']
+    function userCtrl(userService, monitorService, authentication) {
         var vm = this;
         preProcess();
         init();
+
+        authentication.onLoginSuccess(function(){
+            init();
+        });
+
+        authentication.onLogoutSuccess(function(){
+            preProcess();
+        })
 
         vm.changePage = function (page) {
             vm.curPage = page;

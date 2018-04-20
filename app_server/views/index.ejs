@@ -34,42 +34,7 @@
                     <div ui-view></div>
                 </div>
             </div>
-            <footer class="footer">
-                <div class="container-fluid">
-                    <nav class="pull-left">
-                        <ul>
-                            <li>
-                                <a href="https://www.facebook.com/pages/Coltech/108494469181799" target="_blank">
-                                    COLTECH FACEBOOK
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://uet.vnu.edu.vn/" target="_blank">
-                                    UET Home
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.vnu.edu.vn/home/" target="_blank">
-                                    VNU Home
-                                </a>
-                            </li>
-                            <li>
-                                <a href="http://ctmail.vnu.edu.vn/webmail/src/login.php" target="_blank">
-                                    CtMail
-                                </a>
-                            </li>
-
-                        </ul>
-                    </nav>
-                    <p class="copyright pull-right">
-                        &copy;
-                        <script>
-                            document.write(new Date().getFullYear())
-                        </script>
-                        <a href="">Bui Minh Quang</a>, K61C-CLC
-                    </p>
-                </div>
-            </footer>
+            <app-footer></app-footer>
         </div>
     </div>
 </body>
@@ -105,28 +70,26 @@
 <script src="user/app.config.js"></script>
 
 <!--================= service ================================-->
-<script src="user/common/services/viewManage.service.js"></script>
-<script src="user/common/services/stream.service.js"></script>
-<script src="user/common/services/monitor.service.js"></script>
-<script src="user/common/services/authentication.service.js"></script>
-<script src="user/common/services/video.service.js"></script>
-<script src="user/common/services/setting.service.js"></script>
+<script src="user/services/viewManage.service.js"></script>
+<script src="user/services/stream.service.js"></script>
+<script src="user/services/monitor.service.js"></script>
+<script src="user/services/authentication.service.js"></script>
+<script src="user/services/video.service.js"></script>
+<script src="user/services/setting.service.js"></script>
 <!-- <script src="common/services/admin.service.js"></script> -->
 
 <!--==================== filter ====================-->
-<script src="user/common/filters/pagination.filter.js"></script>
-<script src="user/common/filters/range.filter.js"></script>
+<script src="user/filters/pagination.filter.js"></script>
+<script src="user/filters/range.filter.js"></script>
 
-<!--================ directive (ctrl of directive) ============-->
-<script src="user/common/directives/sidebar/sidebar.directive.js"></script>
-<script src="user/common/directives/sidebar/sidebar.controller.js"></script>
 
-<script src="user/common/directives/navbar/navbar.directive.js"></script>
-<script src="user/common/directives/navbar/navbar.controller.js"></script>
+<!-- =============== components ================ -->
+<script src="user/components/sidebar/sidebar.component.js"></script>
+<script src="user/components/navbar/navbar.component.js"></script>
+<script src="user/components/appFooter/appFooter.component.js"></script>
+<script src="user/components/views/live/live.component.js"></script>
+<script src="user/components/views/playback/playback.component.js"></script>
+<script src="user/components/views/setting/setting.component.js"></script>
 
-<!-- =============== view contorller ================ -->
-<script src="user/live/live.controller.js"></script>
-<script src="user/playback/playback.controller.js"></script>
-<script src="user/setting/setting.controller.js"></script>
 
 </html>

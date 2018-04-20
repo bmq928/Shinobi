@@ -1,7 +1,19 @@
 (function () {
+    // angular
+    //     .module('app')
+    //     .controller('liveCtrl', liveCtrl)
+
     angular
-        .module('app')
-        .controller('liveCtrl', liveCtrl)
+    .module('app')
+    .component('liveView', {
+        templateUrl: './user/components/views/live/live.template.html',
+        bindings: {
+
+        },
+        controller: liveCtrl,
+        controllerAs: 'vm'
+    })
+    
 
     liveCtrl.$inject = ['$sce', 'stream', 'monitor', 'authentication', 'setting']
     function liveCtrl($sce, stream, monitor, authentication, setting) {

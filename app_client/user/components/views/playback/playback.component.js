@@ -1,7 +1,18 @@
 (function () {
+    // angular
+    //     .module('app')
+    //     .controller('playbackCtrl', playbackCtrl)
+
     angular
-        .module('app')
-        .controller('playbackCtrl', playbackCtrl)
+    .module('app')
+    .component('playView', {
+        templateUrl: './user/components/playback/playback.template.html',
+        bindings: {
+
+        },
+        controller: playbackCtrl,
+        controllerAs: 'vm'
+    })
 
     playbackCtrl.$inject = ['video', 'authentication', 'setting']
     function playbackCtrl(video, authentication, setting) {
