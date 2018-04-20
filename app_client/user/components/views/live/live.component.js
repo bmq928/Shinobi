@@ -15,8 +15,8 @@
     })
     
 
-    liveCtrl.$inject = ['$sce', 'stream', 'monitor', 'authentication', 'setting']
-    function liveCtrl($sce, stream, monitor, authentication, setting) {
+    liveCtrl.$inject = ['$sce', 'stream', 'monitor', 'authentication', 'setting', 'filterText']
+    function liveCtrl($sce, stream, monitor, authentication, setting, filterText) {
         var vm = this;
         var settingService = setting();
 
@@ -30,6 +30,10 @@
         authentication.onLogoutSuccess(function (data) {
             //make component to default value
             preProcess();
+        });
+
+        filterText.onTyping(function(text){
+            vm.filter = text;
         })
 
 
@@ -63,6 +67,9 @@
 
 
         function preProcess() {
+            filterText.resetFilter();
+
+            vm.filter = '';
             vm.monitors = [];
             vm.flashCur = {};
             vm.targetMonitor = null;

@@ -1,6 +1,8 @@
 <ul class="row">
     <!-- <li class="col-sm-6 col-md-4 col-lg-4 media" ng-repeat="m in vm.monitors track by $index"> -->
-    <li class="{{vm.videoClass}}" ng-repeat="m in vm.monitors | pagination: vm.curPage: vm.setting.monitorPerPage">
+    <li 
+    class="{{vm.videoClass}}" 
+    ng-repeat="m in vm.monitors | pagination: vm.curPage: vm.setting.monitorPerPage | filter: vm.filter">
 
         <div class="media-header">
             <!-- tittle of monitor -->

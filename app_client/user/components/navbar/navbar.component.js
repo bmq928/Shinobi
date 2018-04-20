@@ -10,8 +10,8 @@
             controllerAs: 'vm'
         })
 
-    navbarCtrl.$inject = ['viewManage', 'authentication']
-    function navbarCtrl(viewManage, authentication) {
+    navbarCtrl.$inject = ['viewManage', 'authentication', 'filterText']
+    function navbarCtrl(viewManage, authentication, filterText) {
         var vm = this;
 
         //initial 
@@ -19,7 +19,12 @@
         vm.curView = viewManage.getCurView();
         vm.isLogin = authentication.isLogin;
         vm.curUser = null;
-        console.log(vm.curView);
+        vm.filterText = '';
+
+        filterText.onResetFilter(function () {
+            vm.filterText = '';
+            textTyping();
+        })
 
         vm.$onInit = function () {
 
@@ -28,6 +33,11 @@
                 .onLoginSuccess(function () {
                     $('#login-modal-close').click();
                 })
+        }
+
+        
+        vm.textTyping = function(){
+            textTyping();
         }
 
         //update view on title
@@ -66,8 +76,8 @@
             vm.curUser = data;
         }
 
-        vm.search = function () {
-
+        function textTyping() {
+            filterText.typing(vm.filterText);
         }
 
 
