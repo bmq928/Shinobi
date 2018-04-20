@@ -11,8 +11,8 @@
             controllerAs: 'vm'
         })
 
-    userCtrl.$inject = ['userService', 'monitorService', 'authentication']
-    function userCtrl(userService, monitorService, authentication) {
+    userCtrl.$inject = ['userService', 'monitorService', 'authentication', 'filterText']
+    function userCtrl(userService, monitorService, authentication, filterText) {
         var vm = this;
         preProcess();
         init();
@@ -23,6 +23,10 @@
 
         authentication.onLogoutSuccess(function(){
             preProcess();
+        })
+
+        filterText.onTyping(function(text){
+            vm.filter = text;
         })
 
         vm.changePage = function (page) {
@@ -74,8 +78,10 @@
 
 
         function preProcess() {
-
+            filterText.resetFilter();
+            
             //main
+            vm.filter = '';
             vm.users = [];
             vm.err = '';
             vm.resp = '';

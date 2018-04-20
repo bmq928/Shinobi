@@ -11,8 +11,8 @@
         })
 
 
-    navbarCtrl.$inject = ['$scope', 'authentication']
-    function navbarCtrl($scope, authentication) {
+    navbarCtrl.$inject = ['$scope', 'authentication', 'filterText']
+    function navbarCtrl($scope, authentication, filterText) {
         var vm = this;
 
 
@@ -27,6 +27,11 @@
                     $('#login-modal-close').click();
                 })
         }
+
+        filterText.onResetFilter(function () {
+            vm.filterText = '';
+            textTyping();
+        })
 
         vm.prepareLogin = function () {
             vm.navErr = ''
@@ -56,8 +61,9 @@
             vm.curUser = data;
         }
 
-
-
+        vm.textTyping = function(){
+            textTyping();
+        }
 
 
         function preProcess() {
@@ -66,6 +72,7 @@
             vm.isLogin = authentication.isLogin;
             vm.navErr = '';
             vm.curUser = null;
+            vm.filterText = '';
         }
 
         function init() {
@@ -83,14 +90,14 @@
         }
 
 
-
-
-
-
         function getView(locationHash) {
             var curView = locationHash.substr(3);
             //capitalize the first charecter to match the style of view
             return (curView) ? curView[0].toUpperCase() + curView.substr(1) : '';
+        }
+
+        function textTyping() {
+            filterText.typing(vm.filterText);
         }
     }
 })()

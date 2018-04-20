@@ -14,7 +14,7 @@
     </thead>
     <tbody>
 
-        <tr ng-repeat="user in vm.users | pagination: vm.curPage: vm.videoPerPage">
+        <tr ng-repeat="user in vm.users | pagination: vm.curPage: vm.videoPerPage | filter:vm.filter">
             <td>
                 <input type="checkbox" ng-model="vm.deleteUsers[user._id]">
             </td>
