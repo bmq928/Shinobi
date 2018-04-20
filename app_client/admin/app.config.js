@@ -31,6 +31,6 @@
                 url: '/user',
                 template : '<user-view></user-view>'
             })
-        $urlRouterProvider.otherwise('/monitor');
+        $urlRouterProvider.otherwise('/user');
     }
 })()
