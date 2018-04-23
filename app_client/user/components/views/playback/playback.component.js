@@ -4,15 +4,15 @@
     //     .controller('playbackCtrl', playbackCtrl)
 
     angular
-    .module('app')
-    .component('playView', {
-        templateUrl: './user/components/playback/playback.template.html',
-        bindings: {
+        .module('app')
+        .component('playView', {
+            templateUrl: './user/components/playback/playback.template.html',
+            bindings: {
 
-        },
-        controller: playbackCtrl,
-        controllerAs: 'vm'
-    })
+            },
+            controller: playbackCtrl,
+            controllerAs: 'vm'
+        })
 
     playbackCtrl.$inject = ['video', 'authentication', 'setting']
     function playbackCtrl(video, authentication, setting) {
@@ -29,7 +29,11 @@
         authentication.onLogoutSuccess(function (data) {
             //make component to default value
             preProcess();
-        })
+        });
+
+        filterText.onTyping(function(text){
+            vm.filter = text;
+        });
 
         //make the size of the video
         // vm.videoClass = "col-sm-6 col-md-"
@@ -50,6 +54,10 @@
 
 
         function preProcess() {
+            filterText.resetFilter();
+
+            //main
+            vm.filter = '';
             vm.videos = [];
             vm.targetVideo = null; //just for showInfo method
             vm.numPage = 0;
