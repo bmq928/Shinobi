@@ -1,3 +1,3 @@
 (function(){
-    angular.module('appAdmin', ['ui.router'])
+    angular.module('appAdmin', ['ui.router', 'ngResource'])
 })()

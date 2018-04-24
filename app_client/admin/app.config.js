@@ -31,6 +31,18 @@
                 url: '/user',
                 template : '<user-view></user-view>'
             })
+            .state(views.live.title, {
+                url: '/live',
+                template : '<live-view></live-view>'
+            })
+            .state(views.playback.title, {
+                url: '/playback',
+                template : '<playback-view></playback-view>'
+            })
+            .state(views.setting.title, {
+                url: '/setting',
+                template : '<setting-view></setting-view>'
+            })
         $urlRouterProvider.otherwise('/user');
     }
 })()

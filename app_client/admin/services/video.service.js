@@ -1,14 +1,14 @@
 (function(){
     angular
-        .module('app')
-        .factory('admin', admin)
+        .module('appAdmin')
+        .factory('video', video)
 
-    admin.$inject = ['$resource']
-    function admin ($resource){
+    video.$inject = ['$resource']
+    function video($resource){
 
         return {
-            goToAdminPage: function(callback){
-                var url = '/api/sendAdminPage';
+            getAllByMid: function(mid, callback){
+                var url = 'api/getAllVideoByMid?mid='+mid;
                 var token = localStorage.getItem('jwt-token');
 
                 return $resource(url, {}, {
@@ -19,11 +19,11 @@
                 })
                     .get()
                     .$promise
-                    .then(function (data) {
-                        callback(null,data);
+                    .then(function(resp){
+                        callback(resp.videos)
                     })
-                    .catch(function (err) {
-                        callback(err);
+                    .catch(function(err){
+                        console.error(err);
                     })
             }
         }
