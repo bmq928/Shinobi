@@ -1,4 +1,5 @@
 <nav class="navbar navbar-transparent navbar-absolute">
+    <span class="text-danger" ng-if="!vm.isRoot()">You are not root user</span>
     <div class="container-fluid">
         <div ng-include="'../admin/components/navbar/subNavbar/navbar-header.template.html'"></div>
         <div ng-include="'../admin/components/navbar/subNavbar/navbar-tool.template.html'"></div>

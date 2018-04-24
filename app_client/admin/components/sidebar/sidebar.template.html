@@ -28,7 +28,8 @@
 
             <li ng-repeat="tab in vm.tabs track by $index"
                 ng-class="{'active' : tab.title === vm.curTab}"
-                ng-click="vm.tabClick(tab)">
+                ng-click="vm.tabClick(tab)"
+                ng-if="vm.isRoot()">
                 <a ui-sref="{{tab.title}}">
                     <i class="material-icons" ng-bind="tab.icon"></i>
                     <p ng-bind="tab.title"></p>

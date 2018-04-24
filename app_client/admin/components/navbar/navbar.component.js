@@ -49,6 +49,15 @@
                     })
         }
 
+        vm.isRoot = function(){
+            if(localStorage.getItem('jwt-token')){
+                var info = localStorage.getItem('jwt-token').split('.')[1];
+                return JSON.parse(atob(info)).isRoot;
+            }
+
+            return false;
+        }
+
         vm.logout = function () {
             authentication.logout();
         }
