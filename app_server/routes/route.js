@@ -8,7 +8,7 @@ route.get('/', (req, res) => {
 
 route.get('/admin', (req, res) => {
     res.render('../views/admin.ejs');
-})
+});
 
 route.use('/api', apiRoute);
 
