@@ -26,6 +26,7 @@
         init();
         authentication.onLoginSuccess(function (data) {
             init();
+            location.href = '/#';
         })
         authentication.onLogoutSuccess(function (data) {
             //make component to default value

@@ -4,16 +4,16 @@
     //     .controller('liveCtrl', liveCtrl)
 
     angular
-    .module('app')
-    .component('liveView', {
-        templateUrl: './user/components/views/live/live.template.html',
-        bindings: {
+        .module('app')
+        .component('liveView', {
+            templateUrl: './user/components/views/live/live.template.html',
+            bindings: {
 
-        },
-        controller: liveCtrl,
-        controllerAs: 'vm'
-    })
-    
+            },
+            controller: liveCtrl,
+            controllerAs: 'vm'
+        })
+
 
     liveCtrl.$inject = ['$sce', 'stream', 'monitor', 'authentication', 'setting', 'filterText']
     function liveCtrl($sce, stream, monitor, authentication, setting, filterText) {
@@ -25,14 +25,16 @@
         // get data from server
         init();
         authentication.onLoginSuccess(function (data) {
+            console.log('login success');
             init();
+            location.href = '/#';
         })
         authentication.onLogoutSuccess(function (data) {
             //make component to default value
             preProcess();
         });
 
-        filterText.onTyping(function(text){
+        filterText.onTyping(function (text) {
             vm.filter = text;
         })
 
@@ -116,6 +118,8 @@
                     console.log(vm.setting);
                 });
             }
+
+
         }
     }
 })()
